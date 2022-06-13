@@ -1,7 +1,7 @@
 from tkinter import *
 
 
-#---criar janela-----------------------------#
+#---criar janela-----------------------------Teste#
 
 root = Tk()
 fr1 = Frame(root)
