@@ -8,6 +8,7 @@ fr1 = Frame(root)
 fr2 = Frame(root)
 fr3 = Frame(root)
 fr4 = Frame(root)
+fr5 = Frame(root)
 
 bg1 = PhotoImage(file="fundo_b.png")
 
@@ -71,17 +72,15 @@ root.grid_columnconfigure(2, weight=1)
 
 #geometria--------------------------------------------------#
 root.geometry('1980x1080')
-root.minsize(width=800, height=300)
-#root.maxsize(width=1000, height=400)
-
-
 #root.configure(background= "white")
+
 root.title("Atividade Frame")
 
 #--------------------------------------------------#
 
+#executar a janela rr
 
-
+######## teste guilherme 
 
 #criar os widgets-------------------------------------------------#
 
@@ -203,3 +202,17 @@ bt8.grid(row=2, column=0, sticky=NSEW)
 
 #executar a janela
 root.mainloop()
+
+#cadastro
+lb1_1= Label (fr5, text='Usuário: ')
+in1_1= Entry (fr5)
+lb2_2= Label (fr5, text='Senha: ')
+in2_2= Entry (fr5)
+bt1_1= Button (text='Entrar')
+
+#layout cadastro 
+lb1_1.grid(row=0, column=0)
+in1_1.grid(row=0, column=1)
+lb2_2.grid(row=1, column=0)
+in2_2.grid(row=1, column=1)
+bt1_1.grid(row=2, column=0)
