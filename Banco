@@ -10,7 +10,7 @@ fr2 = Frame(root)
 fr3 = Frame(root)
 fr4 = Frame(root)
 fr5 = Frame(root)
-bg = PhotoImage(file = "login-form.png")
+
 
 
 
@@ -160,10 +160,7 @@ bt8 = Button(fr4, text="Salvar ", font="Arial 16", command=cheke)
 
 #--Frame 5-----------------------------#
 
-b1 = Button(fr5, bd=0, image=img_log, command=login)
-b1.place(width=188, height=102, x=66, y=550)
-b2 = Button(fr5, bd=0, image=bt_login)
-b2.place(width=244, height=100, x=559, y=603)
+
 
 #---Configuração do Frame--------------------------------#
 
