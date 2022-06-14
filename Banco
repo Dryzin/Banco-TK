@@ -32,7 +32,7 @@ def data(event=None):
 #-------------------------------#
 
 
-#---Função Tratar CPF -----------------------------#
+#---Função Tratar CPF -----------------------------#            
 def capitura(event=None):    
     x=in3.get().replace('.','').replace('-', '')[:11]
     y=''
@@ -74,7 +74,7 @@ root.grid_columnconfigure(2, weight=1)
 
 
 #root.configure(background= "white")
-root.title("Atividade Frame")
+root.title("Atividade Frame teste ")
 
 #--------------------------------------------------#
 
