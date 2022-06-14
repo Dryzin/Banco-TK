@@ -1,6 +1,8 @@
 from tkinter import *
 
 
+
+
 #---criar janela-----------------------------Teste#
 
 root = Tk()
@@ -157,7 +159,7 @@ bt8 = Button(fr4, text="Salvar ", font="Arial 16", command=cheke)
 lb1_1= Label (fr5, text='Usuário: ')
 in1_1= Entry (fr5)
 lb2_2= Label (fr5, text='Senha: ')
-in2_2= Entry (fr5)
+in2_2= Entry (fr5, show='*')
 bt1_1= Button (fr5, text='Entrar')
 
 
