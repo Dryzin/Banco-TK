@@ -1,4 +1,6 @@
+import tkinter
 from tkinter import *
+import posiciona
 
 
 #---criar janela-----------------------------Teste#
@@ -77,8 +79,24 @@ root.title("Atividade Frame")
 
 #--------------------------------------------------#
 
+def login():
+    fr1.destroy()
+    fr2.pack()
 
+    lab_login = Label(fr2, image=img_log)
+    lab_login.pack()
 
+    us = Entry(fr2, bd=2, font=("Calibri", 15), justify=CENTER)
+    us.place(width=301, height=31, x=602, y=293)
+
+    sh = Entry(fr2, bd=2, font=("Calibri", 15), justify=CENTER, show='*')
+    sh.place(width=301, height=32, x=600, y=407)
+
+    b3 = Button(fr2, bd=0, image=img_bot2)
+    b3.place(width=185, height=108, x=662, y=526)
+
+img_log = PhotoImage(file="Layout_login.png")
+img_bot2 = PhotoImage(file="login.png")
 
 #criar os widgets-------------------------------------------------#
 
