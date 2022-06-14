@@ -19,6 +19,13 @@ def caps(*args):
     var.set(var.get().title())
 var.trace("w", caps)
 
+#----------Função letra Maiúscula
+#caps primeira letra
+var=StringVar()
+def caps(*args):
+    var.set(var.get().title())
+var.trace("w", caps)
+
 #-------------------------------#
      
 def cheke():
