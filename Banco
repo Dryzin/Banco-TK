@@ -1,3 +1,4 @@
+import tkinter
 from tkinter import *
 
 
@@ -10,7 +11,9 @@ fr3 = Frame(root)
 fr4 = Frame(root)
 fr5 = Frame(root)
 
-bg1 = PhotoImage(file="fundo_b.png")
+
+
+
 
 #----------- Função telefone
 def telefone(event=None):    
@@ -35,6 +38,14 @@ var=StringVar()
 def caps(*args):
     var.set(var.get().title())
 var.trace("w", caps)
+
+#----------Função letra Maiúscula
+#caps primeira letra
+var=StringVar()
+def caps(*args):
+    var.set(var.get().title())
+var.trace("w", caps)
+
 
 #-------------------------------#
      
@@ -102,16 +113,18 @@ root.geometry('1980x1080')
 root.title("Atividade Frame")
 
 #--------------------------------------------------#
+
 #executar a janela rr
 
 
 ######## teste guilherme 
 
+
 #criar os widgets-------------------------------------------------#
 
 #---Frame 1-----------------------------#
 
-label_img =Label(root, image=bg1)
+
 
 lb1 = Label(fr1, text='Dados Pessoais', font="Calibri 20")
 
@@ -165,11 +178,6 @@ bt8 = Button(fr4, text="Salvar ", font="Arial 16", command=cheke)
 
 #--Frame 5-----------------------------#
 
-lb1_1= Label (fr5, text='Usuário: ')
-in1_1= Entry (fr5)
-lb2_2= Label (fr5, text='Senha: ')
-in2_2= Entry (fr5)
-bt1_1= Button (fr5, text='Entrar')
 
 
 #---Configuração do Frame--------------------------------#
@@ -234,11 +242,11 @@ bt8.grid(row=2, column=0, sticky=NSEW)
 #--Frame 5------------------------------- login#
 
 #layout login
-lb1_1.grid(row=0, column=0)
-in1_1.grid(row=0, column=1)
-lb2_2.grid(row=1, column=0)
-in2_2.grid(row=1, column=1)
-bt1_1.grid(row=2, column=0)
+#lb1_1.grid(row=0, column=0)
+#in1_1.grid(row=0, column=1)
+#lb2_2.grid(row=1, column=0)
+#in2_2.grid(row=1, column=1)
+#bt1_1.grid(row=2, column=0)
 
 
 #executar a janela
