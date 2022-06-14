@@ -22,7 +22,7 @@ bt3 = Button(root, text='Bt3')
 
 bt1.grid(row=0, column=0, sticky=NSEW)
 bt2.grid(row=0, column=2, sticky=NSEW)
-lb1.grid(row=0, column=1, sticky=NSEW)
+lb1.grid(row=0, column=5, sticky=NSEW)
 bt3.grid(row=1, column=0, columnspan=3, sticky=NSEW)
 
 
