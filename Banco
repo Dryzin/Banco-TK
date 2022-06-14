@@ -1,3 +1,4 @@
+import tkinter
 from tkinter import *
 
 
@@ -19,6 +20,24 @@ class Conta:
 #banco1 = Conta(CPF= in3.get(), numero= 4000, saldo=0.0)
 
 
+#----------- Função telefone
+def telefone(event=None):    
+    x=in2.get().replace('(','').replace(')', '').replace('-', '')[:12]
+    y=''
+    if event.keysym.lower() == "backspace": return
+    for i in range(len(x)):
+        if not x[i] in '0123456789': continue
+        if i in [0]:
+            y+= '(' + x[i]
+        elif i in [2]:
+            y+= x[i] + ')'
+        elif i in [7]:
+            y+= x[i] + '-'
+        else:
+            y+=x[i]
+    in2.delete(0, 'end')
+    in2.insert(0, y)
+
 #----------Função letra Maiúscula
 #caps primeira letra
 var=StringVar()
@@ -32,6 +51,7 @@ var=StringVar()
 def caps(*args):
     var.set(var.get().title())
 var.trace("w", caps)
+
 
 #-------------------------------#
      
@@ -113,6 +133,7 @@ in1 = Entry(fr1, font="Arial 16", textvariable=var)
 
 lb3 = Label(fr1, text='Telefone:', font="Calibri 16")
 in2 = Entry(fr1, font="Arial 16")
+in2.bind("<KeyRelease>", telefone)
 
 lb4 = Label(fr1, text='CPF:', font="Calibri 16")
 in3 = Entry(fr1, font="Arial 16")
@@ -162,7 +183,6 @@ in1_1= Entry (fr5)
 lb2_2= Label (fr5, text='Senha: ')
 in2_2= Entry (fr5)
 bt1_1= Button (fr5, text='Entrar')
-
 
 #---Configuração do Frame--------------------------------#
 
