@@ -9,6 +9,13 @@ fr2 = Frame(root)
 fr3 = Frame(root)
 fr4 = Frame(root)
 
+#----------Função letra Maiúscula
+#caps primeira letra
+var=StringVar()
+def caps(*args):
+    var.set(var.get().title())
+var.trace("w", caps)
+
 #-------------------------------#
 
 def cheke():
@@ -50,7 +57,7 @@ def capitura(event=None):
     in3.insert(0, y)
 #-------------------------------#
 
-var = IntVar()
+
 
 #---
 root.grid_rowconfigure(0,  weight=1)
@@ -78,7 +85,7 @@ root.title("Atividade Frame")
 #--------------------------------------------------#
 
 
-
+  
 ######## teste guilherme 
 
 #criar os widgets-------------------------------------------------#
@@ -88,7 +95,7 @@ root.title("Atividade Frame")
 lb1 = Label(fr1, text='Dados Pessoais', font="Calibri 20")
 
 lb2 = Label(fr1, text='Nome:', font="Calibri 16")
-in1 = Entry(fr1, font="Arial 16", text='')
+in1 = Entry(fr1, font="Arial 16", textvariable=var)
 
 lb3 = Label(fr1, text='Telefone:', font="Calibri 16")
 in2 = Entry(fr1, font="Arial 16")
