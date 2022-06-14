@@ -2,6 +2,7 @@ from tkinter import *
 
 
 #---criar janela-----------------------------Teste#
+#add imagem
 
 root = Tk()
 fr1 = Frame(root)
@@ -9,6 +10,7 @@ fr2 = Frame(root)
 fr3 = Frame(root)
 fr4 = Frame(root)
 fr5 = Frame(root)
+fr6= Frame(root)
  
 #-------------------------------#
 
@@ -168,7 +170,7 @@ c2.grid(row=7, column=1, sticky=EW)
 
 #---Frame 2--------------------------------CADASTRO DE ENDEREÇO#
 
-lb_1.place(row=8, column=0, sticky=NSEW)
+lb_1.grid(row=8, column=0, sticky=NSEW)
 
 lb_2.grid(row=9, column=0, sticky=NSEW)
 in_1.grid(row=9, column=1, sticky=NSEW)
@@ -197,11 +199,6 @@ bt7.grid(row=2, column=1, sticky=NSEW)
 bt8.grid(row=2, column=0, sticky=NSEW)
 
 
-
-
-#executar a janela
-root.mainloop()
-
 #cadastro
 lb1_1= Label (fr5, text='Usuário: ')
 in1_1= Entry (fr5)
@@ -215,3 +212,9 @@ in1_1.grid(row=0, column=1)
 lb2_2.grid(row=1, column=0)
 in2_2.grid(row=1, column=1)
 bt1_1.grid(row=2, column=0)
+
+
+
+
+#executar a janela
+root.mainloop()
