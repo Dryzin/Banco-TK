@@ -71,10 +71,13 @@ root.grid_columnconfigure(2, weight=1)
 #root.geometry('800x300')
 #root.minsize(width=800, height=300)
 #root.maxsize(width=1000, height=400)
-
-
 #root.configure(background= "white")
+<<<<<<< HEAD
 root.title("Atividade Frame teste ")
+=======
+
+root.title("Atividade Frame")
+>>>>>>> 144f8bb361ddbc7ea19ff075078640425ec7951c
 
 #--------------------------------------------------#
 
