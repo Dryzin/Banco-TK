@@ -52,6 +52,7 @@ def capitura(event=None):
     in3.delete(0, 'end')
     in3.insert(0, y)
 #-------------------------------#
+#rrrrr
 
 var = IntVar()
 
