@@ -26,4 +26,5 @@ lb1.grid(row=0, column=1, sticky=NSEW)
 bt3.grid(row=1, column=0, columnspan=3, sticky=NSEW)
 
 
-#executar a janela
+
+#executar a janela cu
