@@ -10,11 +10,14 @@ fr1 = Frame(root)
 fr2 = Frame(root)
 fr3 = Frame(root)
 fr4 = Frame(root)
+fr5 = Frame(root)
+bg = PhotoImage(file = "login-form.png")
+
 
 #-------------------------------#
 
 def cheke():
-    bt8["text"] = "Salvo"
+    bt8["text"] = "Salvo !"
 
 
 #----Função Tratar DATA -----------------------------#
@@ -70,37 +73,25 @@ root.grid_columnconfigure(2, weight=1)
 
 
 #geometria--------------------------------------------------#
-#root.geometry('800x300')
-#root.minsize(width=800, height=300)
-#root.maxsize(width=1000, height=400)
+root.geometry('1980x1080')
 #root.configure(background= "white")
 
 root.title("Atividade Frame")
 
 #--------------------------------------------------#
 
-def login():
-    fr1.destroy()
-    fr2.pack()
 
-    lab_login = Label(fr2, image=img_log)
-    lab_login.pack()
 
-    us = Entry(fr2, bd=2, font=("Calibri", 15), justify=CENTER)
-    us.place(width=301, height=31, x=602, y=293)
+#executar a janela rr
 
-    sh = Entry(fr2, bd=2, font=("Calibri", 15), justify=CENTER, show='*')
-    sh.place(width=301, height=32, x=600, y=407)
+######## teste guilherme 
 
-    b3 = Button(fr2, bd=0, image=img_bot2)
-    b3.place(width=185, height=108, x=662, y=526)
-
-img_log = PhotoImage(file="Layout_login.png")
-img_bot2 = PhotoImage(file="login.png")
 
 #criar os widgets-------------------------------------------------#
 
 #---Frame 1-----------------------------#
+
+label_img =Label(root, image=bg1)
 
 lb1 = Label(fr1, text='Dados Pessoais', font="Calibri 20")
 
@@ -144,15 +135,19 @@ in_5 = Entry(fr2, font="Arial 16")
 #---Frame 3-----------------------------#
 
 bt1 = Button(fr3, text="CRIAR CONTA ", font="Arial 14", command= lambda: [fr3.grid_remove(), fr2.grid(row=0, column=1), fr1.grid(row=0, column=0), fr4.grid(row=4, column=0, pady=10, sticky=EW)])
-bt2 = Button(fr3, text="             ACESSAR CONTA             ", font="Arial 14")
+bt2 = Button(fr3, text="ACESSAR CONTA", font="Arial 14", command= lambda: [fr3.grid_remove(), fr5.grid(row=0, column=1), fr4.grid(row=4, column=1)])
 lb_7 = Label(fr3, text='BEM-VINDO AO BANCO NSY', font="Calibri 22", pady=30)
 
 #--Frame 4-----------------------------#
-bt7 = Button(fr4, text="Voltar ", font="Arial 16", command= lambda: [fr1.grid_remove(), fr2.grid_remove(), fr3.grid(row=1, column=0, sticky=NSEW), fr4.grid_remove()])
+bt7 = Button(fr4, text="Voltar ", font="Arial 16", command= lambda: [fr1.grid_remove(), fr2.grid_remove(), fr3.grid(row=1, column=0, sticky=NSEW), fr4.grid_remove(), fr5.grid_remove()])
 bt8 = Button(fr4, text="Salvar ", font="Arial 16", command=cheke)
 
+#--Frame 5-----------------------------#
 
-
+b1 = Button(fr5, bd=0, image=img_log, command=login)
+b1.place(width=188, height=102, x=66, y=550)
+b2 = Button(fr5, bd=0, image=bt_login)
+b2.place(width=244, height=100, x=559, y=603)
 
 #---Configuração do Frame--------------------------------#
 
@@ -203,8 +198,9 @@ in_5.grid(row=13, column=1, sticky=NSEW)
 
 #---Frame 3-------------------------------- TELA ENTRADA#
 
+#label_img.place(x=0, y=0)
 bt1.grid(row=1, column=0, sticky=NSEW)
-bt2.grid(row=1, column=1, sticky=NSEW)
+bt2.grid(row=2, column=0, sticky=NSEW)
 lb_7.grid(row=0, column=0, sticky=NSEW)
 
 #--Frame 4------------------------------- BOTÕES DE NAVEGAÇÃO#
@@ -212,7 +208,14 @@ lb_7.grid(row=0, column=0, sticky=NSEW)
 bt7.grid(row=2, column=1, sticky=NSEW)
 bt8.grid(row=2, column=0, sticky=NSEW)
 
+#--Frame 5------------------------------- login#
 
+#layout login
+#lb1_1.grid(row=0, column=0)
+#in1_1.grid(row=0, column=1)
+#lb2_2.grid(row=1, column=0)
+#in2_2.grid(row=1, column=1)
+#bt1_1.grid(row=2, column=0)
 
 
 #executar a janela
