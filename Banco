@@ -1,6 +1,5 @@
 import tkinter
 from tkinter import *
-import posiciona
 
 
 #---criar janela-----------------------------Teste#
@@ -14,11 +13,28 @@ fr5 = Frame(root)
 bg = PhotoImage(file = "login-form.png")
 
 
-#-------------------------------#
 
+
+#----------Função letra Maiúscula
+#caps primeira letra
+var=StringVar()
+def caps(*args):
+    var.set(var.get().title())
+var.trace("w", caps)
+
+#----------Função letra Maiúscula
+#caps primeira letra
+var=StringVar()
+def caps(*args):
+    var.set(var.get().title())
+var.trace("w", caps)
+
+
+#-------------------------------#
+     
 def cheke():
     bt8["text"] = "Salvo !"
-
+ 
 
 #----Função Tratar DATA -----------------------------#
 def data(event=None):    
@@ -55,7 +71,8 @@ def capitura(event=None):
     in3.insert(0, y)
 #-------------------------------#
 
-var = IntVar()
+var1 = IntVar()
+
 
 #---
 root.grid_rowconfigure(0,  weight=1)
@@ -80,9 +97,8 @@ root.title("Atividade Frame")
 
 #--------------------------------------------------#
 
-
-
 #executar a janela rr
+
 
 ######## teste guilherme 
 
@@ -91,12 +107,12 @@ root.title("Atividade Frame")
 
 #---Frame 1-----------------------------#
 
-label_img =Label(root, image=bg1)
+
 
 lb1 = Label(fr1, text='Dados Pessoais', font="Calibri 20")
 
 lb2 = Label(fr1, text='Nome:', font="Calibri 16")
-in1 = Entry(fr1, font="Arial 16", text='')
+in1 = Entry(fr1, font="Arial 16", textvariable=var)
 
 lb3 = Label(fr1, text='Telefone:', font="Calibri 16")
 in2 = Entry(fr1, font="Arial 16")
@@ -110,8 +126,8 @@ in4 = Entry(fr1, font="Arial 16")
 in4.bind("<KeyRelease>", data)
 
 lb6 = Label(fr1, text='Sexo: ', font="Calibri 16")
-c1 = Checkbutton(fr1, text='Masculino',variable=var, onvalue=1, offvalue=0)
-c2 = Checkbutton(fr1, text='Feminino',variable=var, onvalue=2, offvalue=1)
+c1 = Checkbutton(fr1, text='Masculino',variable=var1, onvalue=1, offvalue=0)
+c2 = Checkbutton(fr1, text='Feminino',variable=var1, onvalue=2, offvalue=1)
 
 #---Frame 2-----------------------------#
 
