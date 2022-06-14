@@ -60,7 +60,7 @@ def capitura(event=None):
     in3.insert(0, y)
 #-------------------------------#
 
-var = IntVar()
+var1 = IntVar()
 
 
 #---
@@ -113,8 +113,8 @@ in4 = Entry(fr1, font="Arial 16")
 in4.bind("<KeyRelease>", data)
 
 lb6 = Label(fr1, text='Sexo: ', font="Calibri 16")
-c1 = Checkbutton(fr1, text='Masculino',variable=var, onvalue=1, offvalue=0)
-c2 = Checkbutton(fr1, text='Feminino',variable=var, onvalue=2, offvalue=1)
+c1 = Checkbutton(fr1, text='Masculino',variable=var1, onvalue=1, offvalue=0)
+c2 = Checkbutton(fr1, text='Feminino',variable=var1, onvalue=2, offvalue=1)
 
 #---Frame 2-----------------------------#
 
