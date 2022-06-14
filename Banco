@@ -15,7 +15,7 @@ bg1 = PhotoImage(file="fundo_b.png")
 #-------------------------------#
 
 def cheke():
-    bt8["text"] = "Salvo"
+    bt8["text"] = "Salvo !"
 
 
 #----Função Tratar DATA -----------------------------#
