@@ -12,7 +12,7 @@ fr4 = Frame(root)
 #-------------------------------#
 
 def cheke():
-    bt8["text"] = "Salvo"
+    bt8["text"] = "Salvo !"
 
 
 #----Função Tratar DATA -----------------------------#
