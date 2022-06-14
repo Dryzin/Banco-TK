@@ -12,6 +12,23 @@ fr5 = Frame(root)
 
 bg1 = PhotoImage(file="fundo_b.png")
 
+#----------- Função telefone
+def telefone(event=None):    
+    x=in2.get().replace('(','').replace(')', '').replace('-', '')[:12]
+    y=''
+    if event.keysym.lower() == "backspace": return
+    for i in range(len(x)):
+        if not x[i] in '0123456789': continue
+        if i in [0]:
+            y+= '(' + x[i]
+        elif i in [2]:
+            y+= x[i] + ')'
+        elif i in [7]:
+            y+= x[i] + '-'
+        else:
+            y+=x[i]
+    in2.delete(0, 'end')
+    in2.insert(0, y)
 #----------Função letra Maiúscula
 #caps primeira letra
 var=StringVar()
@@ -103,6 +120,7 @@ in1 = Entry(fr1, font="Arial 16", textvariable=var)
 
 lb3 = Label(fr1, text='Telefone:', font="Calibri 16")
 in2 = Entry(fr1, font="Arial 16")
+in2.bind("<KeyRelease>", telefone)
 
 lb4 = Label(fr1, text='CPF:', font="Calibri 16")
 in3 = Entry(fr1, font="Arial 16")
