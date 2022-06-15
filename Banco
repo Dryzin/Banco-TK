@@ -1,3 +1,4 @@
+import tkinter
 from tkinter import *
 
 
@@ -14,6 +15,25 @@ fr5 = Frame(root)
 
 
 
+
+
+#----------- Função telefone
+def telefone(event=None):    
+    x=in2.get().replace('(','').replace(')', '').replace('-', '')[:12]
+    y=''
+    if event.keysym.lower() == "backspace": return
+    for i in range(len(x)):
+        if not x[i] in '0123456789': continue
+        if i in [0]:
+            y+= '(' + x[i]
+        elif i in [2]:
+            y+= x[i] + ')'
+        elif i in [7]:
+            y+= x[i] + '-'
+        else:
+            y+=x[i]
+    in2.delete(0, 'end')
+    in2.insert(0, y)
 #----------Função letra Maiúscula
 #caps primeira letra
 var=StringVar()
@@ -27,6 +47,7 @@ var=StringVar()
 def caps(*args):
     var.set(var.get().title())
 var.trace("w", caps)
+
 
 #-------------------------------#
      
@@ -94,10 +115,12 @@ root.geometry('1980x1080')
 root.title("Atividade Frame")
 
 #--------------------------------------------------#
+
 #executar a janela rr
 
 
 ######## teste guilherme 
+
 
 #criar os widgets-------------------------------------------------#
 
@@ -112,6 +135,7 @@ in1 = Entry(fr1, font="Arial 16", textvariable=var)
 
 lb3 = Label(fr1, text='Telefone:', font="Calibri 16")
 in2 = Entry(fr1, font="Arial 16")
+in2.bind("<KeyRelease>", telefone)
 
 lb4 = Label(fr1, text='CPF:', font="Calibri 16")
 in3 = Entry(fr1, font="Arial 16")
@@ -156,11 +180,14 @@ bt8 = Button(fr4, text="Salvar ", font="Arial 16", command=cheke)
 
 #--Frame 5-----------------------------#
 
+<<<<<<< HEAD
 lb1_1= Label (fr5, text='Usuário: ')
 in1_1= Entry (fr5)
 lb2_2= Label (fr5, text='Senha: ')
 in2_2= Entry (fr5, show='*')
 bt1_1= Button (fr5, text='Entrar')
+=======
+>>>>>>> 50f8f3c9fba430b87a104a87885df75fb374650e
 
 
 #---Configuração do Frame--------------------------------#
@@ -225,11 +252,11 @@ bt8.grid(row=2, column=0, sticky=NSEW)
 #--Frame 5------------------------------- login#
 
 #layout login
-lb1_1.grid(row=0, column=0)
-in1_1.grid(row=0, column=1)
-lb2_2.grid(row=1, column=0)
-in2_2.grid(row=1, column=1)
-bt1_1.grid(row=2, column=0)
+#lb1_1.grid(row=0, column=0)
+#in1_1.grid(row=0, column=1)
+#lb2_2.grid(row=1, column=0)
+#in2_2.grid(row=1, column=1)
+#bt1_1.grid(row=2, column=0)
 
 
 #executar a janela
