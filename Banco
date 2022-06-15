@@ -1,4 +1,7 @@
+import tkinter
 from tkinter import *
+
+
 
 
 #---criar janela-----------------------------Teste#
@@ -10,7 +13,28 @@ fr2 = Frame(root)
 fr3 = Frame(root)
 fr4 = Frame(root)
 fr5 = Frame(root)
-fr6= Frame(root)
+fr6= LabelFrame(root, width=1900, height=1000)
+
+
+
+
+#----------- Função telefone
+def telefone(event=None):    
+    x=in2.get().replace('(','').replace(')', '').replace('-', '')[:12]
+    y=''
+    if event.keysym.lower() == "backspace": return
+    for i in range(len(x)):
+        if not x[i] in '0123456789': continue
+        if i in [0]:
+            y+= '(' + x[i]
+        elif i in [2]:
+            y+= x[i] + ')'
+        elif i in [7]:
+            y+= x[i] + '-'
+        else:
+            y+=x[i]
+    in2.delete(0, 'end')
+    in2.insert(0, y)
 
 #----------Função letra Maiúscula
 #caps primeira letra
@@ -25,11 +49,12 @@ var=StringVar()
 def caps(*args):
     var.set(var.get().title())
 var.trace("w", caps)
+
 
 #-------------------------------#
      
 def cheke():
-    bt8["text"] = "Salvo !"
+   bt8["text"] = "Entrar"
  
 
 #----Função Tratar DATA -----------------------------#
@@ -92,10 +117,7 @@ root.geometry('1980x1080')
 root.title("Atividade Frame")
 
 #--------------------------------------------------#
-#executar a janela rr
 
-
-######## teste guilherme 
 
 #criar os widgets-------------------------------------------------#
 
@@ -110,6 +132,7 @@ in1 = Entry(fr1, font="Arial 16", textvariable=var)
 
 lb3 = Label(fr1, text='Telefone:', font="Calibri 16")
 in2 = Entry(fr1, font="Arial 16")
+in2.bind("<KeyRelease>", telefone)
 
 lb4 = Label(fr1, text='CPF:', font="Calibri 16")
 in3 = Entry(fr1, font="Arial 16")
@@ -150,9 +173,18 @@ lb_7 = Label(fr3, text='BEM-VINDO AO BANCO NSY', font="Calibri 22", pady=30)
 
 #--Frame 4-----------------------------#
 bt7 = Button(fr4, text="Voltar ", font="Arial 16", command= lambda: [fr1.grid_remove(), fr2.grid_remove(), fr3.grid(row=1, column=0, sticky=NSEW), fr4.grid_remove(), fr5.grid_remove()])
-bt8 = Button(fr4, text="Salvar ", font="Arial 16", command=cheke)
+bt8 = Button(fr4, text="Entrar", font="Arial 16", command=cheke)
 
 #--Frame 5-----------------------------#
+
+
+lb1_1= Label (fr5, text='Usuário: ')
+in1_1= Entry (fr5)
+lb2_2= Label (fr5, text='Senha: ')
+in2_2= Entry (fr5, show='*')
+bt1_1= Button (fr5, text='Entrar')
+
+
 
 lb1_1= Label (fr5, text='Usuário: ')
 in1_1= Entry (fr5)
@@ -163,7 +195,7 @@ bt1_1= Button (fr5, text='Entrar')
 
 #---Configuração do Frame--------------------------------#
 
-fr6.grid(row=1, column=0, sticky=NSEW)
+fr3.grid(row=1, column=0, sticky=NSEW)
 
 
 
@@ -237,12 +269,12 @@ bt4_extrato=Button (fr6, text='Extrato', font='Arial 26')
 bt5_transferencia=Button (fr6, text='Transferência', font='Arial 26')
 
 #layout opçoes
-lb1_area.place(x=1, y=1)
-bt1_exit.place(x=300, y=150)
-bt2_deposito.place(x=50, y=10)
-bt3_saque.place(x=50, y=30)
-bt4_extrato.place(x=50, y=60)
-bt5_transferencia.place(x=50, y=50)
+lb1_area.place(x=750, y=50)
+bt1_exit.place(x=100, y=800)
+bt2_deposito.place(x=100, y=200)
+bt3_saque.place(x=100, y=400)
+bt4_extrato.place(x=1600, y=200)
+bt5_transferencia.place(x=1500, y=400)
 
 #executar a janela
 root.mainloop()
