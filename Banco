@@ -122,7 +122,7 @@ root.title("Atividade Frame")
 
 #criar os widgets-------------------------------------------------#
 
-#---Frame 1-----------------------------#
+#---Frame 1-----------------#
 
 
 
@@ -135,7 +135,7 @@ lb3 = Label(fr1, text='Telefone:', font="Calibri 16")
 in2 = Entry(fr1, font="Arial 16")
 in2.bind("<KeyRelease>", telefone)
 
-lb4 = Label(fr1, text='CPF:', font="Calibri 16")
+lb4 = Label(fr1, text='CPF:', font="Calibri 17")
 in3 = Entry(fr1, font="Arial 16")
 in3.bind("<KeyRelease>", capitura)
 
