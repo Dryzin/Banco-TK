@@ -2,6 +2,8 @@ import tkinter
 from tkinter import *
 
 
+
+
 #---criar janela-----------------------------Teste#
 
 root = Tk()
@@ -10,9 +12,6 @@ fr2 = Frame(root)
 fr3 = Frame(root)
 fr4 = Frame(root)
 fr5 = Frame(root)
-
-
-
 
 
 #----------- Função telefone
@@ -50,7 +49,7 @@ var.trace("w", caps)
 #-------------------------------#
      
 def cheke():
-    bt8["text"] = "Salvo !"
+   bt8["text"] = "Entrar"
  
 
 #----Função Tratar DATA -----------------------------#
@@ -114,11 +113,6 @@ root.title("Atividade Frame")
 
 #--------------------------------------------------#
 
-#executar a janela rr
-
-
-######## teste guilherme 
-
 
 #criar os widgets-------------------------------------------------#
 
@@ -174,11 +168,27 @@ lb_7 = Label(fr3, text='BEM-VINDO AO BANCO NSY', font="Calibri 22", pady=30)
 
 #--Frame 4-----------------------------#
 bt7 = Button(fr4, text="Voltar ", font="Arial 16", command= lambda: [fr1.grid_remove(), fr2.grid_remove(), fr3.grid(row=1, column=0, sticky=NSEW), fr4.grid_remove(), fr5.grid_remove()])
-bt8 = Button(fr4, text="Salvar ", font="Arial 16", command=cheke)
+bt8 = Button(fr4, text="Entrar", font="Arial 16", command=cheke)
 
 #--Frame 5-----------------------------#
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+lb1_1= Label (fr5, text='Usuário: ')
+in1_1= Entry (fr5)
+lb2_2= Label (fr5, text='Senha: ')
+in2_2= Entry (fr5, show='*')
+bt1_1= Button (fr5, text='Entrar')
+=======
+>>>>>>> 50f8f3c9fba430b87a104a87885df75fb374650e
 
+=======
+lb1_1= Label (fr5, text='Usuário: ')
+in1_1= Entry (fr5)
+lb2_2= Label (fr5, text='Senha: ')
+in2_2= Entry (fr5)
+bt1_1= Button (fr5, text='Entrar')
+>>>>>>> 6d8c4b88d75f6b157671116dfc23ff78d84d37bb
 
 #---Configuração do Frame--------------------------------#
 
@@ -241,12 +251,11 @@ bt8.grid(row=2, column=0, sticky=NSEW)
 
 #--Frame 5------------------------------- login#
 
-#layout login
-#lb1_1.grid(row=0, column=0)
-#in1_1.grid(row=0, column=1)
-#lb2_2.grid(row=1, column=0)
-#in2_2.grid(row=1, column=1)
-#bt1_1.grid(row=2, column=0)
+lb1_1.grid(row=0, column=0)
+in1_1.grid(row=0, column=1)
+lb2_2.grid(row=1, column=0)
+in2_2.grid(row=1, column=1)
+bt1_1.grid(row=2, column=0)
 
 
 #executar a janela
