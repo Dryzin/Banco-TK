@@ -2,9 +2,7 @@ import tkinter
 from tkinter import *
 
 
-
-
-#---criar janela-----------------------------Teste#
+#---criar janela-----------------------------#
 
 root = Tk()
 fr1 = Frame(root)
@@ -12,7 +10,7 @@ fr2 = Frame(root)
 fr3 = Frame(root)
 fr4 = Frame(root)
 fr5 = Frame(root)
-
+fr6= LabelFrame(root, width=2075, height=1100)
 
 #----------- Função telefone
 def telefone(event=None):    
@@ -31,25 +29,43 @@ def telefone(event=None):
             y+=x[i]
     in2.delete(0, 'end')
     in2.insert(0, y)
-#----------Função letra Maiúscula
+
+
+#----------Função letra Maiúscula bairro
+#caps primeira letra
+var6=StringVar()
+def caps(*args):
+    var6.set(var6.get().title())
+var6.trace("w", caps)
+
+
+#----------Função letra Maiúscula bairro
+#caps primeira letra
+var5=StringVar()
+def caps(*args):
+    var5.set(var5.get().title())
+var5.trace("w", caps)
+
+
+#----------Função letra Maiúscula nome
 #caps primeira letra
 var=StringVar()
 def caps(*args):
     var.set(var.get().title())
 var.trace("w", caps)
 
-#----------Função letra Maiúscula
+#----------Função letra Maiúscula rua
 #caps primeira letra
-var=StringVar()
+var4=StringVar()
 def caps(*args):
-    var.set(var.get().title())
-var.trace("w", caps)
+    var4.set(var4.get().title())
+var4.trace("w", caps)
 
 
 #-------------------------------#
      
 def cheke():
-   bt8["text"] = "Entrar"
+    bt8["text"] = "Acessar"
  
 
 #----Função Tratar DATA -----------------------------#
@@ -113,10 +129,9 @@ root.title("Atividade Frame")
 
 #--------------------------------------------------#
 
-
 #criar os widgets-------------------------------------------------#
 
-#---Frame 1-----------------#
+#---Frame 1-----------------------------#
 
 
 
@@ -129,7 +144,7 @@ lb3 = Label(fr1, text='Telefone:', font="Calibri 16")
 in2 = Entry(fr1, font="Arial 16")
 in2.bind("<KeyRelease>", telefone)
 
-lb4 = Label(fr1, text='CPF:', font="Calibri 17")
+lb4 = Label(fr1, text='CPF:', font="Calibri 16")
 in3 = Entry(fr1, font="Arial 16")
 in3.bind("<KeyRelease>", capitura)
 
@@ -146,13 +161,13 @@ c2 = Checkbutton(fr1, text='Feminino',variable=var1, onvalue=2, offvalue=1)
 lb_1 = Label(fr2, text='Endereço', font="Calibri 20")
 
 lb_2 = Label(fr2, text='Rua:', font="Calibri 16")
-in_1 = Entry(fr2, font="Arial 16")
+in_1 = Entry(fr2, font="Arial 16",textvariable=var4)
 
 lb_3 = Label(fr2, text='Bairro:', font="Calibri 16")
-in_2 = Entry(fr2, font="Arial 16")
+in_2 = Entry(fr2, font="Arial 16", textvariable=var5)
 
 lb_4 = Label(fr2, text='Cidade:', font="Calibri 16")
-in_3 = Entry(fr2, font="Arial 16")
+in_3 = Entry(fr2, font="Arial 16",textvariable=var6)
 
 lb_5 = Label(fr2, text='Número:', font="Calibri 16")
 in_4 = Entry(fr2, font="Arial 16")
@@ -163,32 +178,29 @@ in_5 = Entry(fr2, font="Arial 16")
 #---Frame 3-----------------------------#
 
 bt1 = Button(fr3, text="CRIAR CONTA ", font="Arial 14", command= lambda: [fr3.grid_remove(), fr2.grid(row=0, column=1), fr1.grid(row=0, column=0), fr4.grid(row=4, column=0, pady=10, sticky=EW)])
-bt2 = Button(fr3, text="ACESSAR CONTA", font="Arial 14", command= lambda: [fr3.grid_remove(), fr5.grid(row=0, column=1), fr4.grid(row=4, column=1)])
+bt2 = Button(fr3, text="ACESSAR CONTA", font="Arial 14", command= lambda: [fr3.grid_remove(), fr5.grid(row=0, column=1), fr4.grid(row=4, column=1), fr4.grid_remove()])
 lb_7 = Label(fr3, text='BEM-VINDO AO BANCO NSY', font="Calibri 22", pady=30)
 
 #--Frame 4-----------------------------#
 bt7 = Button(fr4, text="Voltar ", font="Arial 16", command= lambda: [fr1.grid_remove(), fr2.grid_remove(), fr3.grid(row=1, column=0, sticky=NSEW), fr4.grid_remove(), fr5.grid_remove()])
-bt8 = Button(fr4, text="Entrar", font="Arial 16", command=cheke)
+bt8 = Button(fr4, text="Acessar", font="Arial 16", command= lambda: [fr1.grid_remove(),fr2.grid_remove(), fr6.grid(row=1, column=0, sticky=NSEW)])
 
 #--Frame 5-----------------------------#
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-lb1_1= Label (fr5, text='Usuário: ')
-in1_1= Entry (fr5)
-lb2_2= Label (fr5, text='Senha: ')
-in2_2= Entry (fr5, show='*')
-bt1_1= Button (fr5, text='Entrar')
-=======
->>>>>>> 50f8f3c9fba430b87a104a87885df75fb374650e
-
-=======
 lb1_1= Label (fr5, text='Usuário: ')
 in1_1= Entry (fr5)
 lb2_2= Label (fr5, text='Senha: ')
 in2_2= Entry (fr5)
-bt1_1= Button (fr5, text='Entrar')
->>>>>>> 6d8c4b88d75f6b157671116dfc23ff78d84d37bb
+bt1_1= Button (fr5, text='Entrar',command= lambda: [fr3.grid_remove(), fr5.grid_remove(), fr6.grid(row=1, column=0, sticky=NSEW)])
+bt1_2= Button (fr5, text='Voltar',command= lambda: [fr1.grid_remove(), fr2.grid_remove(), fr3.grid(row=1, column=0, sticky=NSEW), fr4.grid_remove(), fr5.grid_remove()])
+
+#--Frame 6-----------------------------#
+lb1_area= Label (fr6, text='Área de Operações', font='Arial 26')
+bt1_exit= Button (fr6, text='Sair', font='Arial 26', command= lambda: [fr3.grid(row=1, column=0, sticky=NSEW), fr6.grid_remove(), fr4.grid_remove()])
+bt2_deposito=Button (fr6, text='Depósito', font='Arial 26')
+bt3_saque=Button (fr6, text='Saque', font='Arial 26')
+bt4_extrato=Button (fr6, text='Extrato', font='Arial 26')
+bt5_transferencia=Button (fr6, text='Transferência', font='Arial 26')
 
 #---Configuração do Frame--------------------------------#
 
@@ -251,12 +263,22 @@ bt8.grid(row=2, column=0, sticky=NSEW)
 
 #--Frame 5------------------------------- login#
 
+#layout login
 lb1_1.grid(row=0, column=0)
 in1_1.grid(row=0, column=1)
 lb2_2.grid(row=1, column=0)
 in2_2.grid(row=1, column=1)
-bt1_1.grid(row=2, column=0)
+bt1_1.grid(row=2, column=0, pady=60)
+bt1_2.grid(row=2, column=1, pady=60)
 
+#--Frame 6------------------------------- Area de ações#
+
+lb1_area.place(x=750, y=50)
+bt1_exit.place(x=100, y=800)
+bt2_deposito.place(x=100, y=200)
+bt3_saque.place(x=100, y=400)
+bt4_extrato.place(x=1600, y=200)
+bt5_transferencia.place(x=1500, y=400)
 
 #executar a janela
 root.mainloop()
