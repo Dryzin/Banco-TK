@@ -2,7 +2,7 @@ import tkinter
 from tkinter import *
 
 
-#---criar janela-----------------------------Teste#
+#---criar janela-----------------------------#
 
 root = Tk()
 fr1 = Frame(root)
@@ -11,7 +11,6 @@ fr3 = Frame(root)
 fr4 = Frame(root)
 fr5 = Frame(root)
 fr6= LabelFrame(root, width=2075, height=1100)
-
 
 #----------- Função telefone
 def telefone(event=None):    
