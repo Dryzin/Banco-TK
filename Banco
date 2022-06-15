@@ -12,6 +12,7 @@ fr4 = Frame(root)
 fr5 = Frame(root)
 fr6= LabelFrame(root, width=2075, height=1100)
 
+
 #----------- Função telefone
 def telefone(event=None):    
     x=in2.get().replace('(','').replace(')', '').replace('-', '')[:12]
@@ -170,7 +171,7 @@ bt8 = Button(fr4, text="Acessar", font="Arial 16", command= lambda: [fr1.grid_re
 
 #--Frame 5-----------------------------#
 
-lb1_1= Label (fr5, text='Usuário: ')
+lb1_1= Label (fr5, text='Conta: ')
 in1_1= Entry (fr5)
 lb2_2= Label (fr5, text='Senha: ')
 in2_2= Entry (fr5)
