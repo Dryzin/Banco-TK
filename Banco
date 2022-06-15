@@ -31,7 +31,8 @@ def telefone(event=None):
     in2.insert(0, y)
 
 
-#----------Função letra Maiúscula bairro
+
+#----------Função letra Maiúscula cidade
 #caps primeira letra
 var6=StringVar()
 def caps(*args):
@@ -48,6 +49,9 @@ var5.trace("w", caps)
 
 
 #----------Função letra Maiúscula nome
+
+#----------Função letra Maiúscula
+
 #caps primeira letra
 var=StringVar()
 def caps(*args):
@@ -183,20 +187,32 @@ lb_7 = Label(fr3, text='BEM-VINDO AO BANCO NSY', font="Calibri 22", pady=30)
 
 #--Frame 4-----------------------------#
 bt7 = Button(fr4, text="Voltar ", font="Arial 16", command= lambda: [fr1.grid_remove(), fr2.grid_remove(), fr3.grid(row=1, column=0, sticky=NSEW), fr4.grid_remove(), fr5.grid_remove()])
+
 bt8 = Button(fr4, text="Acessar", font="Arial 16", command= lambda: [fr1.grid_remove(),fr2.grid_remove(), fr6.grid(row=1, column=0, sticky=NSEW)])
+
+bt8 = Button(fr4, text="Acessar", font="Arial 16", command=cheke)
+
 
 #--Frame 5-----------------------------#
 
 lb1_1= Label (fr5, text='Usuário: ')
 in1_1= Entry (fr5)
 lb2_2= Label (fr5, text='Senha: ')
+
 in2_2= Entry (fr5)
+
+in2_2= Entry (fr5, show='*')
+
 bt1_1= Button (fr5, text='Entrar',command= lambda: [fr3.grid_remove(), fr5.grid_remove(), fr6.grid(row=1, column=0, sticky=NSEW)])
 bt1_2= Button (fr5, text='Voltar',command= lambda: [fr1.grid_remove(), fr2.grid_remove(), fr3.grid(row=1, column=0, sticky=NSEW), fr4.grid_remove(), fr5.grid_remove()])
 
 #--Frame 6-----------------------------#
 lb1_area= Label (fr6, text='Área de Operações', font='Arial 26')
+
 bt1_exit= Button (fr6, text='Sair', font='Arial 26', command= lambda: [fr3.grid(row=1, column=0, sticky=NSEW), fr6.grid_remove(), fr4.grid_remove()])
+
+bt1_exit= Button (fr6, text='Sair', font='Arial 26', command= lambda: [fr3.grid(row=1, column=0, sticky=NSEW), fr6.grid_remove()])
+
 bt2_deposito=Button (fr6, text='Depósito', font='Arial 26')
 bt3_saque=Button (fr6, text='Saque', font='Arial 26')
 bt4_extrato=Button (fr6, text='Extrato', font='Arial 26')
