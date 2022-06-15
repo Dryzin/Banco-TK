@@ -108,7 +108,7 @@ root.grid_columnconfigure(2, weight=1)
 root.geometry('1980x1080')
 #root.configure(background= "white")
 
-root.title("Atividade Frame")
+root.title("Banco Tik Tok")
 
 #--------------------------------------------------#
 
