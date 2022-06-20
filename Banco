@@ -5,7 +5,7 @@ from tkinter import *
 
 
 #---criar janela-----------------------------Teste#
-#add imagem
+#.add imagem
 
 root = Tk()
 fr1 = Frame(root)
@@ -195,7 +195,7 @@ bt1_1= Button (fr5, text='Entrar')
 
 #---Configuração do Frame--------------------------------#
 
-fr3.grid(row=1, column=0, sticky=NSEW)
+fr6.grid(row=1, column=0, sticky=NSEW)
 
 
 
