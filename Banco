@@ -125,7 +125,6 @@ root.grid_columnconfigure(2, weight=1)
 
 #---
 
-
 #geometria--------------------------------------------------#
 root.geometry('1980x1080')
 #root.configure(background= "white")
