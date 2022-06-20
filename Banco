@@ -66,8 +66,6 @@ var5.trace("w", caps)
 
 #----------Função letra Maiúscula nome
 
-#----------Função letra Maiúscula
-
 #caps primeira letra
 var=StringVar()
 def caps(*args):
@@ -144,7 +142,7 @@ root.grid_columnconfigure(2, weight=1)
 root.geometry('1980x1080')
 #root.configure(background= "white")
 
-root.title("Banco Tik Tok")
+root.title("Banco NYS")
 
 #--------------------------------------------------#
 
@@ -208,7 +206,7 @@ lb_9 = Label(fr3,bg='#585E63',image=acessar)
 
 #--Frame 4-----------------------------#
 bt7 = Button(fr4, text="Voltar ", font="Arial 16",bg='#585E63',image=voltar, command= lambda: [fr1.grid_remove(), fr2.grid_remove(), fr3.grid(row=1, column=1), fr4.grid_remove(), fr5.grid_remove()])
-bt8 = Button(fr4, text="Acessar", font="Arial 16", image=acessarB, bg='#585E63', command= lambda: [fr1.grid_remove(),fr2.grid_remove(), fr6.grid(row=1, column=0, sticky=NSEW)])
+bt8 = Button(fr4, text="Acessar", font="Arial 16", image=acessarB, bg='#585E63', command= lambda: [fr1.grid_remove(),fr2.grid_remove(), fr5.grid(row=2, column=1), fr4.grid_remove()])
 
 #--Frame 5-----------------------------#
 
