@@ -2,54 +2,31 @@ import tkinter
 from tkinter import *
 
 
-
-
-
-#---criar janela-----------------------------Teste#
-#add imagem
-
 #---criar janela-----------------------------#
 
-
 root = Tk()
-root.configure(bg='black')
-fr1 = Frame(root)
-fr2 = Frame(root)
-fr3 = Frame(root,bg="black")
-fr4 = Frame(root)
-fr5 = Frame(root)
+root.configure(bg='#585E63')
+fr1 = Frame(root, bg='#585E63')
+fr2 = Frame(root, bg='#585E63')
+fr3 = Frame(root, bg='#585E63')
+fr4 = Frame(root, bg='#585E63')
+fr5 = Frame(root, bg='#585E63')
+fr6 = LabelFrame(root, width=800, height=1200, bg='#585E63')
 
-fr6= LabelFrame(root, width=1900, height=1000)
+acessar= PhotoImage(file="acessar.png")
+acessarB= PhotoImage(file="ACESSAR-b.png")
+voltar= PhotoImage(file="vlt.png")
 
-acessar= PhotoImage(file="acessar-conta.png")
-criar= PhotoImage(file="criar-conta.png")
-entrar= PhotoImage(file="entrar.png")
-voltar= PhotoImage(file="voltar.png")
-'''login= PhotoImage(file="login.png")'''
-login= PhotoImage(file="login.png")
+criar= PhotoImage(file="criar.png")
+sair= PhotoImage(file="SAIR.png")
 
+cc= PhotoImage(file="cc.png")
+ac= PhotoImage(file="ac.png")
+logo = PhotoImage(file="LOGO.png")
 
+#geometria
 
-#----------- Função telefone
-def telefone(event=None):    
-    x=in2.get().replace('(','').replace(')', '').replace('-', '')[:12]
-    y=''
-    if event.keysym.lower() == "backspace": return
-    for i in range(len(x)):
-        if not x[i] in '0123456789': continue
-        if i in [0]:
-            y+= '(' + x[i]
-        elif i in [2]:
-            y+= x[i] + ')'
-        elif i in [7]:
-            y+= x[i] + '-'
-        else:
-            y+=x[i]
-    in2.delete(0, 'end')
-    in2.insert(0, y)
-
-fr6= LabelFrame(root, width=2075, height=1100)
-
+root.maxsize(width=800, height=1200)
 
 #----------- Função telefone
 def telefone(event=None):    
@@ -79,7 +56,6 @@ def caps(*args):
 var6.trace("w", caps)
 
 
-
 #----------Função letra Maiúscula bairro
 #caps primeira letra
 var5=StringVar()
@@ -89,8 +65,6 @@ var5.trace("w", caps)
 
 
 #----------Função letra Maiúscula nome
-
-#----------Função letra Maiúscula
 
 #caps primeira letra
 var=StringVar()
@@ -109,10 +83,7 @@ var4.trace("w", caps)
 #-------------------------------#
      
 def cheke():
-
-   bt8["text"] = "Entrar"
-   bt8["text"] = "Acessar"
-
+    bt8["text"] = "Acessar"
  
 
 #----Função Tratar DATA -----------------------------#
@@ -167,126 +138,100 @@ root.grid_columnconfigure(2, weight=1)
 
 #---
 
-
 #geometria--------------------------------------------------#
 root.geometry('1980x1080')
 #root.configure(background= "white")
 
-root.title("Banco Tik Tok")
+root.title("Banco NYS")
 
 #--------------------------------------------------#
 
-
-
-
 #criar os widgets-------------------------------------------------#
 
-#---Frame 1-----------------#
+#---Frame 1-----------------------------#
 
 
 
-lb1 = Label(fr1, text='Dados Pessoais', font="Calibri 20")
+lb1 = Label(fr1, text='DADOS PESSOAIS', font="Calibri 20", bg='#585E63',pady=30)
 
-lb2 = Label(fr1, text='Nome:', font="Calibri 16")
+lb2 = Label(fr1, text='NOME:', font="Calibri 16", bg='#585E63')
+
 in1 = Entry(fr1, font="Arial 16", textvariable=var)
 
-lb3 = Label(fr1, text='Telefone:', font="Calibri 16")
+lb3 = Label(fr1, text='      TELEFONE:', font="Calibri 16", bg='#585E63')
 in2 = Entry(fr1, font="Arial 16")
 in2.bind("<KeyRelease>", telefone)
 
-lb4 = Label(fr1, text='CPF:', font="Calibri 17")
+lb4 = Label(fr1, text='CPF:     ', font="Calibri 16", bg='#585E63')
 in3 = Entry(fr1, font="Arial 16")
 in3.bind("<KeyRelease>", capitura)
 
-lb5 = Label(fr1, text='Data:', font="Calibri 16")
+lb5 = Label(fr1, text='DATA:  ', font="Calibri 16", bg='#585E63')
 in4 = Entry(fr1, font="Arial 16")
 in4.bind("<KeyRelease>", data)
 
-lb6 = Label(fr1, text='Sexo: ', font="Calibri 16")
-c1 = Checkbutton(fr1, text='Masculino',variable=var1, onvalue=1, offvalue=0)
-c2 = Checkbutton(fr1, text='Feminino',variable=var1, onvalue=2, offvalue=1)
+lb6 = Label(fr1, text='SEXO:', font="Calibri 16", bg='#585E63', pady=30)
+c1 = Checkbutton(fr1, text='MASCULINO',variable=var1, onvalue=1, offvalue=0, bg='#585E63')
+c2 = Checkbutton(fr1, text='FEMININO',variable=var1, onvalue=2, offvalue=1, bg='#585E63')
 
 #---Frame 2-----------------------------#
 
-lb_1 = Label(fr2, text='Endereço', font="Calibri 20")
+lb_1 = Label(fr2, text='ENDEREÇO', font="Calibri 20", bg='#585E63',pady=30)
 
-lb_2 = Label(fr2, text='Rua:', font="Calibri 16")
+lb_2 = Label(fr2, text='RUA:        ', font="Calibri 16", bg='#585E63')
 in_1 = Entry(fr2, font="Arial 16",textvariable=var4)
 
-lb_3 = Label(fr2, text='Bairro:', font="Calibri 16")
+lb_3 = Label(fr2, text='BAIRRO:   ', font="Calibri 16", bg='#585E63')
 in_2 = Entry(fr2, font="Arial 16", textvariable=var5)
 
-lb_4 = Label(fr2, text='Cidade:', font="Calibri 16")
+lb_4 = Label(fr2, text='CIDADE:   ', font="Calibri 16", bg='#585E63')
 in_3 = Entry(fr2, font="Arial 16",textvariable=var6)
 
-lb_5 = Label(fr2, text='Número:', font="Calibri 16")
+lb_5 = Label(fr2, text='NÚMERO:', font="Calibri 16", bg='#585E63')
 in_4 = Entry(fr2, font="Arial 16")
 
-lb_6 = Label(fr2, text='UF:', font="Calibri 16")
+lb_6 = Label(fr2, text='UF:           ', font="Calibri 16", bg='#585E63')
 in_5 = Entry(fr2, font="Arial 16")
 
 #---Frame 3-----------------------------#
 
+bt1 = Button(fr3, text="CRIAR CONTA ", font="Arial 10", image=cc, bg='#585E63', command= lambda: [fr3.grid_remove(), fr2.grid(row=2, column=0), fr1.grid(row=1, column=0), fr4.grid(row=4,column=0, sticky=NSEW)])
 
-bt1 = Button(fr3, text="CRIAR CONTA ", font="Arial 14",bg='black',image=criar, command= lambda: [fr3.grid_remove(), fr2.grid(row=0, column=1), fr1.grid(row=0, column=0), fr4.grid(row=4, column=0, pady=10, sticky=EW)])
-bt2 = Button(fr3, text="ACESSAR CONTA", font="Arial 14",bg='black',image=acessar, command= lambda: [fr3.grid_remove(), fr5.grid(row=0, column=1), fr4.grid(row=4, column=1)])
-lb_7 = Label(fr3, text='BEM-VINDO AO BANCO NSY',bg='black',image=login, font="Calibri 22", pady=30)
+bt2 = Button(fr3, text="ACESSAR CONTA", font="Arial 14", bg='#585E63',image=ac, command= lambda: [fr3.grid_remove(), fr5.grid(row=2, column=1), fr4.grid(row=4, column=1), fr4.grid_remove()])
 
-#--Frame 4-----------------------------#
-bt7 = Button(fr4, text="Voltar ", font="Arial 16",bg='black',image=voltar, command= lambda: [fr1.grid_remove(), fr2.grid_remove(), fr3.grid(row=1, column=0, sticky=NSEW), fr4.grid_remove(), fr5.grid_remove()])
-bt8 = Button(fr4, text="Entrar", font="Arial 16",bg='black',image=entrar, command=cheke)
+lb_7 = Label(fr3, text='BEM-VINDO AO BANCO NSY',bg='#585E63',image=logo, font="Calibri 22", pady=30)
 
-bt1 = Button(fr3, text="CRIAR CONTA ", font="Arial 14", command= lambda: [fr3.grid_remove(), fr2.grid(row=0, column=1), fr1.grid(row=0, column=0), fr4.grid(row=4, column=0, pady=10, sticky=EW)])
-bt2 = Button(fr3, text="ACESSAR CONTA", font="Arial 14", command= lambda: [fr3.grid_remove(), fr5.grid(row=0, column=1), fr4.grid(row=4, column=1), fr4.grid_remove()])
-lb_7 = Label(fr3, text='BEM-VINDO AO BANCO NSY', font="Calibri 22", pady=30)
+lb_8 = Label(fr3,bg='#585E63',image=criar)
+lb_9 = Label(fr3,bg='#585E63',image=acessar)
 
 #--Frame 4-----------------------------#
-bt7 = Button(fr4, text="Voltar ", font="Arial 16", command= lambda: [fr1.grid_remove(), fr2.grid_remove(), fr3.grid(row=1, column=0, sticky=NSEW), fr4.grid_remove(), fr5.grid_remove()])
-bt8 = Button(fr4, text="Acessar", font="Arial 16", command= lambda: [fr1.grid_remove(),fr2.grid_remove(), fr6.grid(row=1, column=0, sticky=NSEW)])
-
+bt7 = Button(fr4, text="Voltar ", font="Arial 16",bg='#585E63',image=voltar, command= lambda: [fr1.grid_remove(), fr2.grid_remove(), fr3.grid(row=1, column=1), fr4.grid_remove(), fr5.grid_remove()])
+bt8 = Button(fr4, text="Acessar", font="Arial 16", image=acessarB, bg='#585E63', command= lambda: [fr1.grid_remove(),fr2.grid_remove(), fr5.grid(row=2, column=1), fr4.grid_remove()])
 
 #--Frame 5-----------------------------#
 
-lb1_1= Label (fr5, text='Conta: ')
-in1_1= Entry (fr5)
-lb2_2= Label (fr5, text='Senha: ')
+lb1_1= Label (fr5, text='CONTA: ', font="Calibri 16", bg='#585E63')
+in1_1= Entry (fr5, font="Arial 16")
+lb2_2= Label (fr5, text='SENHA: ', font="Calibri 16", bg='#585E63')
 
+in2_2= Entry (fr5, font="Arial 16", show='*')
 
-lb1_1= Label (fr5, text='Usuário: ')
-in1_1= Entry (fr5)
-lb2_2= Label (fr5, text='Senha: ')
-in2_2= Entry (fr5, show='*')
-bt1_1= Button (fr5, text='Entrar')
-
-
-
-lb1_1= Label (fr5, text='Usuário: ')
-in1_1= Entry (fr5)
-lb2_2= Label (fr5, text='Senha: ')
-in2_2= Entry (fr5)
-bt1_1= Button (fr5, text='Entrar')
-
-
-in2_2= Entry (fr5)
-
-in2_2= Entry (fr5, show='*')
-
-bt1_1= Button (fr5, text='Entrar',command= lambda: [fr3.grid_remove(), fr5.grid_remove(), fr6.grid(row=1, column=0, sticky=NSEW)])
-bt1_2= Button (fr5, text='Voltar',command= lambda: [fr1.grid_remove(), fr2.grid_remove(), fr3.grid(row=1, column=0, sticky=NSEW), fr4.grid_remove(), fr5.grid_remove()])
+bt1_1= Button (fr5, text='Entrar',font="Arial 16",image= acessarB, bg='#585E63', command= lambda: [fr3.grid_remove(), fr5.grid_remove(), fr6.grid(row=1, column=0, sticky=NSEW)])
+bt1_2= Button (fr5, text='Voltar',font="Arial 16",image= voltar, bg='#585E63', command= lambda: [fr1.grid_remove(), fr2.grid_remove(), fr3.grid(row=1, column=1), fr4.grid_remove(), fr5.grid_remove()])
 
 #--Frame 6-----------------------------#
-lb1_area= Label (fr6, text='Área de Operações', font='Arial 26')
+lb1_area= Label (fr6, text='ÁREA DE OPERAÇÕES', font='Calibri 20', bg='#585E63')
 
-bt1_exit= Button (fr6, text='Sair', font='Arial 26', command= lambda: [fr3.grid(row=1, column=0, sticky=NSEW), fr6.grid_remove(), fr4.grid_remove()])
-bt2_deposito=Button (fr6, text='Depósito', font='Arial 26')
-bt3_saque=Button (fr6, text='Saque', font='Arial 26')
-bt4_extrato=Button (fr6, text='Extrato', font='Arial 26')
-bt5_transferencia=Button (fr6, text='Transferência', font='Arial 26')
+bt1_exit= Button (fr6, text='Sair', font='Arial 5',image=sair, bg='#585E63', command= lambda: [fr3.grid(row=1, column=1), fr6.grid_remove(), fr4.grid_remove()])
 
+bt2_deposito=Button (fr6, text='Depósito', font='Arial 18', bg='#585E63')
+bt3_saque=Button (fr6, text='Saque', font='Arial 18', bg='#585E63')
+bt4_extrato=Button (fr6, text='Extrato', font='Arial 18', bg='#585E63')
+bt5_transferencia=Button (fr6, text='Transferência', font='Arial 14', bg='#585E63')
 
 #---Configuração do Frame--------------------------------#
 
-fr3.grid(row=1, column=0, sticky=NSEW)
+fr3.grid(row=1, column=1)
 
 
 
@@ -309,8 +254,8 @@ lb5.grid(row=5, column=0, sticky=NSEW)
 in4.grid(row=5, column=1, sticky=NSEW)
 
 lb6.grid(row=6, column=0, sticky=NSEW)
-c1.grid(row=7, column=0, sticky=NSEW)
-c2.grid(row=7, column=1, sticky=EW)
+c1.grid(row=6, column=1, sticky=NSEW)
+c2.grid(row=6, column=2, sticky=NSEW)
 
 #---Frame 2--------------------------------CADASTRO DE ENDEREÇO#
 
@@ -334,48 +279,41 @@ in_5.grid(row=13, column=1, sticky=NSEW)
 #---Frame 3-------------------------------- TELA ENTRADA#
 
 #label_img.place(x=0, y=0)
-bt1.grid(row=1, column=0, sticky=NSEW)
-bt2.grid(row=2, column=0, sticky=NSEW)
-lb_7.grid(row=0, column=0, sticky=NSEW)
+bt1.grid(row=1, column=1, sticky=NSEW)
+bt2.grid(row=2, column=1, sticky=NSEW)
+
+lb_7.grid(row=0, column=1, sticky=NSEW)
+
+lb_8.grid(row=1, column=2, sticky=NSEW)
+lb_9.grid(row=2, column=2, sticky=NSEW)
 
 #--Frame 4------------------------------- BOTÕES DE NAVEGAÇÃO#
 
 bt7.grid(row=2, column=1, sticky=NSEW)
 bt8.grid(row=2, column=0, sticky=NSEW)
 
-#--Frame 5------------------------------- login#
+#--Frame 5------------------------------- Acessar Conta#
 
+lb1_1.grid(row=3, column=0)
+in1_1.grid(row=3, column=1)
 
-#layout login
+lb2_2.grid(row=4, column=0)
+in2_2.grid(row=4, column=1)
 
-lb1_1.grid(row=0, column=0)
-in1_1.grid(row=0, column=1)
-lb2_2.grid(row=1, column=0)
-in2_2.grid(row=1, column=1)
-bt1_1.grid(row=2, column=0)
-
-#opções
-lb1_area= Label (fr6, text='Área de Operações', font='Arial 26')
-bt1_exit= Button (fr6, text='Sair', font='Arial 26')
-bt2_deposito=Button (fr6, text='Depósito', font='Arial 26')
-bt3_saque=Button (fr6, text='Saque', font='Arial 26')
-bt4_extrato=Button (fr6, text='Extrato', font='Arial 26')
-bt5_transferencia=Button (fr6, text='Transferência', font='Arial 26')
-
-#layout opçoes
-
-bt1_1.grid(row=2, column=0, pady=60)
-bt1_2.grid(row=2, column=1, pady=60)
+bt1_1.grid(row=5, column=0, pady=60)
+bt1_2.grid(row=5, column=1, pady=60)
 
 #--Frame 6------------------------------- Area de ações#
 
+lb1_area.place(x=300, y=50)
 
-lb1_area.place(x=750, y=50)
-bt1_exit.place(x=100, y=800)
-bt2_deposito.place(x=100, y=200)
-bt3_saque.place(x=100, y=400)
-bt4_extrato.place(x=1600, y=200)
-bt5_transferencia.place(x=1500, y=400)
+bt1_exit.place(x=0, y=880)
+
+bt2_deposito.place(x=0, y=350)
+bt3_saque.place(x=0, y=500)
+
+bt4_extrato.place(x=700, y=350)
+bt5_transferencia.place(x=663, y=500)
 
 #executar a janela
 root.mainloop()
