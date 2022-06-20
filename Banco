@@ -27,11 +27,13 @@ logo = PhotoImage(file="LOGO.png")
 
 
 #Depósito
+def bt_sair():
+    global janela2
+    janela2.destroy()
 
 def dep():
+    global janela2
     janela2 = Tk()
-    def bt_sair():
-        janela2.destroy()
     janela2.title("Depósito")
     janela2["bg"] = '#585E63'
     Label(janela2,text='Informe o valor:', font="Calibri 20", bg='#585E63').pack()
@@ -44,11 +46,13 @@ def dep():
 
 
 #Saque
+def bt_sair():
+    global janela3
+    janela3.destroy()
 
 def saq():
+    global janela3
     janela3 = Tk()
-    def bt_sair():
-        janela3.destroy()
     janela3.title("Saque")
     janela3["bg"] = '#585E63'
     Label(janela3,text='Informe o valor:', font="Calibri 20", bg='#585E63').pack()
@@ -60,16 +64,19 @@ def saq():
     
 
 #Transferência
+ 
+def sair4():
+    global janela4
+    janela4.destroy()
 
 def tran():
+    global janela4
     janela4 = Tk()
-    def bt_sair():
-        janela4.destroy()
     janela4.title("Transferência")
     janela4["bg"] = '#585E63'
     Label(janela4,text='Informe o valor:', font="Calibri 20", bg='#585E63').pack()
     Entry(janela4).pack()
-    Button(janela4,text='Confirmar',bg='#585E63',command=bt_sair).pack()
+    Button(janela4,text='Confirmar',bg='#585E63',command=sair4).pack()
     janela4.geometry("350x100")
     janela4.resizable(width=0, height=0)
     janela4.mainloop()
@@ -77,12 +84,13 @@ def tran():
 
 #Extrato
 
+'''def bt_sair():
+    global janela5
+    janela5.destroy()
 
-
-'''def ext():
+def ext():
+    global janela5
     janela5 = Tk()
-    def bt_sair():
-        janela5.destroy()
     janela5.title("Extrato")
     janela5["bg"] = '#585E63'
     Label(janela5,text='Informe o valor:', font="Calibri 20", bg='#585E63').pack()
