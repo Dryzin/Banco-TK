@@ -1,8 +1,15 @@
+from cProfile import label
 import tkinter
 from tkinter import *
+from AT import *
 
 
 #---criar janela-----------------------------#
+
+
+def slv():
+   Conta.append(in3.get(), in4.get())
+
 
 root = Tk()
 root.configure(bg='#585E63')
@@ -24,12 +31,103 @@ cc= PhotoImage(file="cc.png")
 ac= PhotoImage(file="ac.png")
 logo = PhotoImage(file="LOGO.png")
 
+
+#Depósito
+def sair2():
+    global janela2
+    janela2.destroy()
+
+contas = []
+def chama_class_conta():
+    global contas
+    contas.append(Conta(in3.get(), in4.get()))
+
+
+def chama_movi1():
+    global ind, contas, in1_1, CPF
+    for i in range(len(contas)):
+        if contas[i].CPF == in1_1.get():
+            #obj.metodo(argumento)
+            contas[i].movi1(ind.get())
+
+
+def dep():
+    global janela2, ind
+
+    janela2 = Tk()
+    janela2.title("Depósito")
+    janela2["bg"] = '#585E63'
+    Label(janela2,text='Informe o valor:', font="Calibri 20", bg='#585E63').pack()
+    ind = Entry(janela2).pack()
+    Button(janela2,text='Confirmar',bg='#585E63',command=lambda:[movi1(ind.get()), sair2()]).pack()
+    janela2.geometry("350x100")
+    janela2.resizable(width=0, height=0)
+    janela2.mainloop()
+    
+
+
+#Saque
+def sair3():
+    global janela3
+    janela3.destroy()
+
+def saq():
+    global janela3
+    janela3 = Tk()
+    janela3.title("Saque")
+    janela3["bg"] = '#585E63'
+    Label(janela3,text='Informe o valor:', font="Calibri 20", bg='#585E63').pack()
+    Entry(janela3).pack()
+    Button(janela3,text='Confirmar',bg='#585E63',command=sair3).pack()
+    janela3.geometry("350x100")
+    janela3.resizable(width=0, height=0)
+    janela3.mainloop()
+    
+
+#Transferência
+ 
+def sair4():
+    global janela4
+    janela4.destroy()
+
+def tran():
+    global janela4
+    janela4 = Tk()
+    janela4.title("Transferência")
+    janela4["bg"] = '#585E63'
+    Label(janela4,text='Informe o valor:', font="Calibri 20", bg='#585E63').pack()
+    Entry(janela4).pack()
+    Button(janela4,text='Confirmar',bg='#585E63',command=sair4).pack()
+    janela4.geometry("350x100")
+    janela4.resizable(width=0, height=0)
+    janela4.mainloop()
+
+
+#Extrato
+
+'''def bt_sair():
+    global janela5
+    janela5.destroy()
+
+def ext():
+    global janela5
+    janela5 = Tk()
+    janela5.title("Extrato")
+    janela5["bg"] = '#585E63'
+    Label(janela5,text='Informe o valor:', font="Calibri 20", bg='#585E63').pack()
+    Entry(janela5).pack()
+    Button(janela5,text='Voltar',bg='#585E63',command=bt_sair).pack()
+    janela5.geometry("350x100")
+    janela5.resizable(width=0, height=0)
+    janela5.mainloop()'''
+
+
 #geometria
 
 root.maxsize(width=800, height=1200)
 
 #----------- Função telefone
-def telefone(event=None):    
+def telefone(event=None):
     x=in2.get().replace('(','').replace(')', '').replace('-', '')[:12]
     y=''
     if event.keysym.lower() == "backspace": return
@@ -65,8 +163,6 @@ var5.trace("w", caps)
 
 
 #----------Função letra Maiúscula nome
-
-#----------Função letra Maiúscula
 
 #caps primeira letra
 var=StringVar()
@@ -140,12 +236,11 @@ root.grid_columnconfigure(2, weight=1)
 
 #---
 
-
 #geometria--------------------------------------------------#
 root.geometry('1980x1080')
 #root.configure(background= "white")
 
-root.title("Banco Tik Tok")
+root.title("Banco NYS")
 
 #--------------------------------------------------#
 
@@ -209,7 +304,7 @@ lb_9 = Label(fr3,bg='#585E63',image=acessar)
 
 #--Frame 4-----------------------------#
 bt7 = Button(fr4, text="Voltar ", font="Arial 16",bg='#585E63',image=voltar, command= lambda: [fr1.grid_remove(), fr2.grid_remove(), fr3.grid(row=1, column=1), fr4.grid_remove(), fr5.grid_remove()])
-bt8 = Button(fr4, text="Acessar", font="Arial 16", image=acessarB, bg='#585E63', command= lambda: [fr1.grid_remove(),fr2.grid_remove(), fr6.grid(row=1, column=0, sticky=NSEW)])
+bt8 = Button(fr4, text="Acessar", font="Arial 16", image=acessarB, bg='#585E63', command= lambda: [fr1.grid_remove(),fr2.grid_remove(), fr5.grid(row=2, column=1), fr4.grid_remove()])
 
 #--Frame 5-----------------------------#
 
@@ -225,12 +320,18 @@ bt1_2= Button (fr5, text='Voltar',font="Arial 16",image= voltar, bg='#585E63', c
 #--Frame 6-----------------------------#
 lb1_area= Label (fr6, text='ÁREA DE OPERAÇÕES', font='Calibri 20', bg='#585E63')
 
+lb1_if= Label (fr6, text='Conta:', font='Calibri 20', bg='#585E63')
+lb2_if= Label (fr6, text='Saldo:', font='Calibri 20', bg='#585E63')
+
+lb3_if= Label (fr6, text='-', font='Calibri 20', bg='#585E63')
+lb4_if= Label (fr6, text='0.00', font='Calibri 20', bg='#585E63')
+
 bt1_exit= Button (fr6, text='Sair', font='Arial 5',image=sair, bg='#585E63', command= lambda: [fr3.grid(row=1, column=1), fr6.grid_remove(), fr4.grid_remove()])
 
-bt2_deposito=Button (fr6, text='Depósito', font='Arial 18', bg='#585E63')
-bt3_saque=Button (fr6, text='Saque', font='Arial 18', bg='#585E63')
+bt2_deposito=Button (fr6, text='Depósito', font='Arial 18', bg='#585E63', command=dep)
+bt3_saque=Button (fr6, text='Saque', font='Arial 18', bg='#585E63',command=saq)
 bt4_extrato=Button (fr6, text='Extrato', font='Arial 18', bg='#585E63')
-bt5_transferencia=Button (fr6, text='Transferência', font='Arial 14', bg='#585E63')
+bt5_transferencia=Button (fr6, text='Transferência', font='Arial 14', bg='#585E63',command=tran)
 
 #---Configuração do Frame--------------------------------#
 
@@ -309,6 +410,13 @@ bt1_2.grid(row=5, column=1, pady=60)
 #--Frame 6------------------------------- Area de ações#
 
 lb1_area.place(x=300, y=50)
+
+lb1_if.place(x=120, y=160)
+lb2_if.place(x=120, y=210)
+
+lb3_if.place(x=220, y=160)
+lb4_if.place(x=200, y=210)
+
 
 bt1_exit.place(x=0, y=880)
 
