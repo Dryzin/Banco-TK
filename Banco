@@ -1,3 +1,4 @@
+from cProfile import label
 import tkinter
 from tkinter import *
 from AT import *
@@ -29,6 +30,82 @@ sair= PhotoImage(file="SAIR.png")
 cc= PhotoImage(file="cc.png")
 ac= PhotoImage(file="ac.png")
 logo = PhotoImage(file="LOGO.png")
+
+
+#Depósito
+def bt_sair():
+    global janela2
+    janela2.destroy()
+
+def dep():
+    global janela2
+    janela2 = Tk()
+    janela2.title("Depósito")
+    janela2["bg"] = '#585E63'
+    Label(janela2,text='Informe o valor:', font="Calibri 20", bg='#585E63').pack()
+    Entry(janela2).pack()
+    Button(janela2,text='Confirmar',bg='#585E63',command=bt_sair).pack()
+    janela2.geometry("350x100")
+    janela2.resizable(width=0, height=0)
+    janela2.mainloop()
+    
+
+
+#Saque
+def bt_sair():
+    global janela3
+    janela3.destroy()
+
+def saq():
+    global janela3
+    janela3 = Tk()
+    janela3.title("Saque")
+    janela3["bg"] = '#585E63'
+    Label(janela3,text='Informe o valor:', font="Calibri 20", bg='#585E63').pack()
+    Entry(janela3).pack()
+    Button(janela3,text='Confirmar',bg='#585E63',command=bt_sair).pack()
+    janela3.geometry("350x100")
+    janela3.resizable(width=0, height=0)
+    janela3.mainloop()
+    
+
+#Transferência
+ 
+def sair4():
+    global janela4
+    janela4.destroy()
+
+def tran():
+    global janela4
+    janela4 = Tk()
+    janela4.title("Transferência")
+    janela4["bg"] = '#585E63'
+    Label(janela4,text='Informe o valor:', font="Calibri 20", bg='#585E63').pack()
+    Entry(janela4).pack()
+    Button(janela4,text='Confirmar',bg='#585E63',command=sair4).pack()
+    janela4.geometry("350x100")
+    janela4.resizable(width=0, height=0)
+    janela4.mainloop()
+
+
+#Extrato
+
+'''def bt_sair():
+    global janela5
+    janela5.destroy()
+
+def ext():
+    global janela5
+    janela5 = Tk()
+    janela5.title("Extrato")
+    janela5["bg"] = '#585E63'
+    Label(janela5,text='Informe o valor:', font="Calibri 20", bg='#585E63').pack()
+    Entry(janela5).pack()
+    Button(janela5,text='Voltar',bg='#585E63',command=bt_sair).pack()
+    janela5.geometry("350x100")
+    janela5.resizable(width=0, height=0)
+    janela5.mainloop()'''
+
 
 #geometria
 
@@ -236,10 +313,10 @@ lb4_if= Label (fr6, text='0.00', font='Calibri 20', bg='#585E63')
 
 bt1_exit= Button (fr6, text='Sair', font='Arial 5',image=sair, bg='#585E63', command= lambda: [fr3.grid(row=1, column=1), fr6.grid_remove(), fr4.grid_remove()])
 
-bt2_deposito=Button (fr6, text='Depósito', font='Arial 18', bg='#585E63')
-bt3_saque=Button (fr6, text='Saque', font='Arial 18', bg='#585E63')
+bt2_deposito=Button (fr6, text='Depósito', font='Arial 18', bg='#585E63', command=dep)
+bt3_saque=Button (fr6, text='Saque', font='Arial 18', bg='#585E63',command=saq)
 bt4_extrato=Button (fr6, text='Extrato', font='Arial 18', bg='#585E63')
-bt5_transferencia=Button (fr6, text='Transferência', font='Arial 14', bg='#585E63')
+bt5_transferencia=Button (fr6, text='Transferência', font='Arial 14', bg='#585E63',command=tran)
 
 #---Configuração do Frame--------------------------------#
 
