@@ -6,11 +6,6 @@ from AT import *
 
 #---criar janela-----------------------------#
 
-
-def slv():
-   Conta.append(in3.get(), in4.get())
-
-
 root = Tk()
 root.configure(bg='#585E63')
 fr1 = Frame(root, bg='#585E63')
@@ -32,11 +27,6 @@ ac= PhotoImage(file="ac.png")
 logo = PhotoImage(file="LOGO.png")
 
 
-#Depósito
-def sair2():
-    global janela2
-    janela2.destroy()
-
 contas = []
 def chama_class_conta():
     global contas
@@ -44,11 +34,17 @@ def chama_class_conta():
 
 
 def chama_movi1():
-    global ind, contas, in1_1, CPF
+    global ind, contas, in1_1, CPF, movi1, lb4_if
     for i in range(len(contas)):
         if contas[i].CPF == in1_1.get():
             #obj.metodo(argumento)
             contas[i].movi1(ind.get())
+
+
+#Depósito
+def sair2():
+    global janela2
+    janela2.destroy()
 
 
 def dep():
@@ -59,7 +55,7 @@ def dep():
     janela2["bg"] = '#585E63'
     Label(janela2,text='Informe o valor:', font="Calibri 20", bg='#585E63').pack()
     ind = Entry(janela2).pack()
-    Button(janela2,text='Confirmar',bg='#585E63',command=lambda:[movi1(ind.get()), sair2()]).pack()
+    Button(janela2,text='Confirmar',bg='#585E63',command=lambda:[chama_movi1(), sair2()]).pack()
     janela2.geometry("350x100")
     janela2.resizable(width=0, height=0)
     janela2.mainloop()
