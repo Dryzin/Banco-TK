@@ -1,3 +1,6 @@
+from struct import pack
+
+
 class Conta:
     def __init__(self, CPF: str, numero: str, saldo: float):
         self.CPF = CPF
@@ -9,9 +12,12 @@ class Conta:
     def inf(self):
         print(f'\nCPF: {self.CPF} \nNumero: {self.numero} \nSaldo: {self.saldo}\n')
 
-    def movi1(self, valor: float):
-        self.saldo+=valor
-        self.historico.transacoes.append(f'Deposito de {valor}')
+    def movi1(self):
+        global janela2, ind
+        self.saldo += ind
+
+
+        #self.historico.transacoes.append(f'Deposito de {valor}')
 
 
     def movi2(self, valor: float):
@@ -44,10 +50,10 @@ class Historico:
 
 t=1
 
-banco1 = Conta(CPF='145.698.854-85', numero=4758, saldo=30.0)
+banco1 = Conta(CPF='145.698.854-85', numero=4758, saldo=112.0)
 banco2 = Conta(CPF='145.698.854-85', numero=4758, saldo=112.0)
 
-
+'''
 while t ==1:
     n = int(input(f"Área de Operação\n[0] - Exit \n[1] - Deposito \n[2] - Saque\n[3] - Extrato\n[4] - Transferência\n->"))
 
@@ -76,5 +82,5 @@ while t ==1:
     if n == 0:
         t=-1
 
-
+'''
 #Autor Endrio

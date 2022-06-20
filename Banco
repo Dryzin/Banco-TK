@@ -8,8 +8,8 @@ from AT import *
 
 
 def slv():
-
    Conta.append(in3.get(), in4.get())
+
 
 root = Tk()
 root.configure(bg='#585E63')
@@ -33,18 +33,33 @@ logo = PhotoImage(file="LOGO.png")
 
 
 #Depósito
-def bt_sair():
+def sair2():
     global janela2
     janela2.destroy()
 
+contas = []
+def chama_class_conta():
+    global contas
+    contas.append(Conta(in3.get(), in4.get()))
+
+
+def chama_movi1():
+    global ind, contas, in1_1, CPF
+    for i in range(len(contas)):
+        if contas[i].CPF == in1_1.get():
+            #obj.metodo(argumento)
+            contas[i].movi1(ind.get())
+
+
 def dep():
-    global janela2
+    global janela2, ind
+
     janela2 = Tk()
     janela2.title("Depósito")
     janela2["bg"] = '#585E63'
     Label(janela2,text='Informe o valor:', font="Calibri 20", bg='#585E63').pack()
-    Entry(janela2).pack()
-    Button(janela2,text='Confirmar',bg='#585E63',command=bt_sair).pack()
+    ind = Entry(janela2).pack()
+    Button(janela2,text='Confirmar',bg='#585E63',command=lambda:[movi1(ind.get()), sair2()]).pack()
     janela2.geometry("350x100")
     janela2.resizable(width=0, height=0)
     janela2.mainloop()
@@ -52,7 +67,7 @@ def dep():
 
 
 #Saque
-def bt_sair():
+def sair3():
     global janela3
     janela3.destroy()
 
@@ -63,7 +78,7 @@ def saq():
     janela3["bg"] = '#585E63'
     Label(janela3,text='Informe o valor:', font="Calibri 20", bg='#585E63').pack()
     Entry(janela3).pack()
-    Button(janela3,text='Confirmar',bg='#585E63',command=bt_sair).pack()
+    Button(janela3,text='Confirmar',bg='#585E63',command=sair3).pack()
     janela3.geometry("350x100")
     janela3.resizable(width=0, height=0)
     janela3.mainloop()
