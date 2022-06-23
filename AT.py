@@ -2,7 +2,7 @@ from struct import pack
 
 
 class Conta:
-    def __init__(self, CPF: str, numero: str, saldo: 0):
+    def __init__(self, CPF: str, numero: str, saldo=0.0):
         self.CPF = CPF
         self.numero = numero
         self.saldo = saldo
