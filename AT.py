@@ -12,9 +12,9 @@ class Conta:
     def inf(self):
         print(f'\nCPF: {self.CPF} \nNumero: {self.numero} \nSaldo: {self.saldo}\n')
 
-    def movi1(self):
-        global janela2, ind
-        self.saldo += ind
+    def movi1(self, valor: float):
+        self.saldo+=valor
+        self.historico.transacoes.append(f'Deposito de {valor}')
 
 
         #self.historico.transacoes.append(f'Deposito de {valor}')
