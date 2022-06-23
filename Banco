@@ -1,6 +1,7 @@
 from cProfile import label
 import tkinter
 from tkinter import *
+from AT import *
 
 
 #---criar janela-----------------------------#
@@ -25,14 +26,34 @@ cc= PhotoImage(file="cc.png")
 ac= PhotoImage(file="ac.png")
 logo = PhotoImage(file="LOGO.png")
 
+#Depósito
+def sair2():
+    global janela2
+    janela2.destroy()
+
+contas = []
+def chama_class_conta():
+    global contas
+    contas.append(Conta(in3.get(), in4.get()))
+
+
+def chama_movi1():
+    global ind, contas, in1_1, CPF, movi1, lb4_if
+    for i in range(len(contas)):
+        if contas[i].CPF == in1_1.get():
+            #obj.metodo(argumento)
+            contas[i].movi1(ind.get())
+
+
 
 #Depósito
 def sair2():
     global janela2
     janela2.destroy()
 
+
 def dep():
-    global janela2
+    global janela2, ind
     janela2 = Tk()
     janela2.title("Depósito")
     janela2["bg"] = '#585E63'
@@ -105,7 +126,7 @@ def ext():
 root.maxsize(width=800, height=1200)
 
 #----------- Função telefone
-def telefone(event=None):    
+def telefone(event=None):
     x=in2.get().replace('(','').replace(')', '').replace('-', '')[:12]
     y=''
     if event.keysym.lower() == "backspace": return
@@ -298,6 +319,12 @@ bt1_2= Button (fr5, text='Voltar',font="Arial 16",image= voltar, bg='#585E63', c
 #--Frame 6-----------------------------#
 lb1_area= Label (fr6, text='ÁREA DE OPERAÇÕES', font='Calibri 20', bg='#585E63')
 
+lb1_if= Label (fr6, text='Conta:', font='Calibri 20', bg='#585E63')
+lb2_if= Label (fr6, text='Saldo:', font='Calibri 20', bg='#585E63')
+
+lb3_if= Label (fr6, text='-', font='Calibri 20', bg='#585E63')
+lb4_if= Label (fr6, text='0.00', font='Calibri 20', bg='#585E63')
+
 bt1_exit= Button (fr6, text='Sair', font='Arial 5',image=sair, bg='#585E63', command= lambda: [fr3.grid(row=1, column=1), fr6.grid_remove(), fr4.grid_remove()])
 
 bt2_deposito=Button (fr6, text='Depósito', font='Arial 18', bg='#585E63', command=dep)
@@ -382,6 +409,13 @@ bt1_2.grid(row=5, column=1, pady=60)
 #--Frame 6------------------------------- Area de ações#
 
 lb1_area.place(x=300, y=50)
+
+lb1_if.place(x=120, y=160)
+lb2_if.place(x=120, y=210)
+
+lb3_if.place(x=220, y=160)
+lb4_if.place(x=200, y=210)
+
 
 bt1_exit.place(x=0, y=880)
 
