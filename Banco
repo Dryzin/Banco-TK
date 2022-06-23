@@ -6,6 +6,23 @@ from AT import *
 
 #---criar janela-----------------------------#
 
+contas = []
+
+def chama_class_conta():
+    global contas, in3, in4
+    contas.append(Conta(in3.get(), in4.get()))
+    print(contas)
+
+def chama_movi1():
+    global contas, in1_1
+    for i in range(len(contas)):
+        if in1_1.get() == contas[i].CPF and in2_2.get() == contas[i].numero:
+            print("foi")
+            fr6.grid(row=1, column=0, sticky=NSEW)
+        else:
+            print(" CPF não encontrado")
+
+
 root = Tk()
 root.configure(bg='#585E63')
 fr1 = Frame(root, bg='#585E63')
@@ -25,25 +42,6 @@ sair= PhotoImage(file="SAIR.png")
 cc= PhotoImage(file="cc.png")
 ac= PhotoImage(file="ac.png")
 logo = PhotoImage(file="LOGO.png")
-
-#Depósito
-def sair2():
-    global janela2
-    janela2.destroy()
-
-contas = []
-def chama_class_conta():
-    global contas
-    contas.append(Conta(in3.get(), in4.get()))
-
-
-def chama_movi1():
-    global ind, contas, in1_1, CPF, movi1, lb4_if
-    for i in range(len(contas)):
-        if contas[i].CPF == in1_1.get():
-            #obj.metodo(argumento)
-            contas[i].movi1(ind.get())
-
 
 
 #Depósito
@@ -303,7 +301,7 @@ lb_9 = Label(fr3,bg='#585E63',image=acessar)
 
 #--Frame 4-----------------------------#
 bt7 = Button(fr4, text="Voltar ", font="Arial 16",bg='#585E63',image=voltar, command= lambda: [fr1.grid_remove(), fr2.grid_remove(), fr3.grid(row=1, column=1), fr4.grid_remove(), fr5.grid_remove()])
-bt8 = Button(fr4, text="Acessar", font="Arial 16", image=acessarB, bg='#585E63', command= lambda: [fr1.grid_remove(),fr2.grid_remove(), fr5.grid(row=2, column=1), fr4.grid_remove()])
+bt8 = Button(fr4, text="Acessar", font="Arial 16", image=acessarB, bg='#585E63', command= lambda: [fr1.grid_remove(),fr2.grid_remove(), fr5.grid(row=2, column=1), fr4.grid_remove(), chama_class_conta()])
 
 #--Frame 5-----------------------------#
 
@@ -313,7 +311,7 @@ lb2_2= Label (fr5, text='SENHA: ', font="Calibri 16", bg='#585E63')
 
 in2_2= Entry (fr5, font="Arial 16", show='*')
 
-bt1_1= Button (fr5, text='Entrar',font="Arial 16",image= acessarB, bg='#585E63', command= lambda: [fr3.grid_remove(), fr5.grid_remove(), fr6.grid(row=1, column=0, sticky=NSEW)])
+bt1_1= Button (fr5, text='Entrar',font="Arial 16",image= acessarB, bg='#585E63', command= lambda: [fr3.grid_remove(), fr5.grid_remove(),chama_movi1()])
 bt1_2= Button (fr5, text='Voltar',font="Arial 16",image= voltar, bg='#585E63', command= lambda: [fr1.grid_remove(), fr2.grid_remove(), fr3.grid(row=1, column=1), fr4.grid_remove(), fr5.grid_remove()])
 
 #--Frame 6-----------------------------#
