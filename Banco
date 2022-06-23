@@ -26,6 +26,25 @@ cc= PhotoImage(file="cc.png")
 ac= PhotoImage(file="ac.png")
 logo = PhotoImage(file="LOGO.png")
 
+#Depósito
+def sair2():
+    global janela2
+    janela2.destroy()
+
+contas = []
+def chama_class_conta():
+    global contas
+    contas.append(Conta(in3.get(), in4.get()))
+
+
+def chama_movi1():
+    global ind, contas, in1_1, CPF, movi1, lb4_if
+    for i in range(len(contas)):
+        if contas[i].CPF == in1_1.get():
+            #obj.metodo(argumento)
+            contas[i].movi1(ind.get())
+
+
 
 #Depósito
 def sair2():
