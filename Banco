@@ -52,18 +52,16 @@ def sair2():
 
 def dep():
     global janela2, ind
-
     janela2 = Tk()
     janela2.title("Depósito")
     janela2["bg"] = '#585E63'
     Label(janela2,text='Informe o valor:', font="Calibri 20", bg='#585E63').pack()
-    ind = Entry(janela2).pack()
-    Button(janela2,text='Confirmar',bg='#585E63')
+    Entry(janela2).pack()
+    Button(janela2,text='Confirmar',bg='#585E63',command=sair2).pack()
     janela2.geometry("350x100")
     janela2.resizable(width=0, height=0)
     janela2.mainloop()
     
-
 
 #Saque
 def sair3():
