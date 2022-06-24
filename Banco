@@ -39,7 +39,7 @@ def depositar():
             lb4_if['text'] = contas[i].saldo
 
         else:
-            print("ERRO")
+            print("ERRO!")
             print(contas[i].numero, in2_2.get())
 
 
