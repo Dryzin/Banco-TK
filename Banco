@@ -9,8 +9,8 @@ from AT import *
 contas = []
 
 def chama_class_conta():
-    global contas, in3, in4
-    contas.append(Conta(in3.get(), in4.get()))
+    global contas, in3, in4, in1
+    contas.append(Conta(in3.get(), in4.get(), in1.get()))
     print(contas)
 
 def chama_movi1():
@@ -23,11 +23,19 @@ def chama_movi1():
             print(" CPF não encontrado")
 
 
-def depositar():
-    global contas, in2_2, in_4,lb4_if,janela2
+def c_nome():
+    global contas, lb3_if, fr6
     for i in range(len(contas)):
         if contas[i].numero == in2_2.get():
-            contas[i].movi1(float(in_4.get()))
+            lb3_if['text'] = contas[i].nome
+            lb4_if['text'] = contas[i].saldo
+
+
+def depositar():
+    global contas, in2_2, in_dep,lb4_if
+    for i in range(len(contas)):
+        if contas[i].numero == in2_2.get():
+            contas[i].movi1(float(in_dep.get()))
             lb4_if['text'] = contas[i].saldo
 
         else:
@@ -36,28 +44,29 @@ def depositar():
 
 
 def saque():
-    global contas, in2_2, in_4, lb4_if,janela2
+    global contas, in2_2, in_saq, lb4_if
     for i in range(len(contas)):
         if contas[i].numero == in2_2.get():
-            contas[i].movi2(float(in_4.get()))
+            contas[i].movi2(float(in_saq.get()))
             lb4_if['text'] = contas[i].saldo
 
         else:
             print("ERRO")
             print(contas[i].saldo)
 
-'''def transf():
+def transf():
+    global contas,in1_tr, fr9
 
     for i in range(len(contas)):
-        if contas[i].numero == "001":
-        origem = contas[i]
+        if contas[i].CPF == in1_1.get():
+            origem = contas[i]
 
     for j in range(len(contas)):
-        if contas[j].numero == "002":
-        destino = contas[j]
+        if contas[j].CPF == in1_tr.get():
+            destino = contas[j]
 
-origem.transfere(100, destino)
-print(origem.saldo, destino.saldo)'''
+    contas.transfere(500, destino)
+    print(origem.saldo, destino.saldo)
 
 root = Tk()
 root.configure(bg='#585E63')
@@ -387,13 +396,13 @@ lb2_2= Label (fr5, text='SENHA: ', font="Calibri 16", bg='#585E63')
 in2_2= Entry (fr5, font="Arial 16", show='*')
 in2_2.bind("<KeyRelease>", data2)
 
-bt1_1= Button (fr5, text='Entrar',font="Arial 16",image= acessarB, bg='#585E63', command= lambda: [fr3.grid_remove(), fr5.grid_remove(),chama_movi1()])
+bt1_1= Button (fr5, text='Entrar',font="Arial 16",image= acessarB, bg='#585E63', command= lambda: [fr3.grid_remove(), fr5.grid_remove(),chama_movi1(), c_nome()])
 bt1_2= Button (fr5, text='Voltar',font="Arial 16",image= voltar, bg='#585E63', command= lambda: [fr1.grid_remove(), fr2.grid_remove(), fr3.grid(row=1, column=1), fr4.grid_remove(), fr5.grid_remove()])
 
 #--Frame 6-----------------------------#
 lb1_area= Label (fr6, text='ÁREA DE OPERAÇÕES', font='Calibri 20', bg='#585E63')
 
-lb1_if= Label (fr6, text='Conta:', font='Calibri 20', bg='#585E63')
+lb1_if= Label (fr6, text='Olá,', font='Calibri 20', bg='#585E63')
 lb2_if= Label (fr6, text='Saldo:', font='Calibri 20', bg='#585E63')
 
 lb3_if= Label (fr6, text='-', font='Calibri 20', bg='#585E63')
@@ -490,7 +499,7 @@ lb1_area.place(x=300, y=50)
 lb1_if.place(x=120, y=160)
 lb2_if.place(x=120, y=210)
 
-lb3_if.place(x=220, y=160)
+lb3_if.place(x=180, y=160)
 lb4_if.place(x=200, y=210)
 
 
@@ -509,7 +518,7 @@ bt5_transferencia.place(x=663, y=500)
 
 lb_dep= Label (fr7, text='DEPOSITO', font='Calibri 20', bg='#585E63')
 in_dep= Entry (fr7, font="Arial 16")
-bt_dep=Button (fr7, text='Confirmar', font='Arial 18', bg='#585E63',command= lambda: [fr7.grid_remove(), fr6.grid(row=1, column=0, sticky=NSEW)])
+bt_dep=Button (fr7, text='Confirmar', font='Arial 18', bg='#585E63',command= lambda: [depositar(),fr7.grid_remove(), fr6.grid(row=1, column=0, sticky=NSEW)])
 
 lb_dep.grid(row=1, column=1, sticky=NSEW)
 in_dep.grid(row=2, column=1, sticky=NSEW)
@@ -520,38 +529,45 @@ bt_dep.grid(row=3, column=1, sticky=NSEW)
 #  Frame Saque (fr8)
 
 
-lb_dep= Label (fr8, text='SAQUE', font='Calibri 20', bg='#585E63')
-in_dep= Entry (fr8, font="Arial 16")
-bt_dep=Button (fr8, text='Confirmar', font='Arial 18', bg='#585E63',command= lambda: [fr8.grid_remove(), fr6.grid(row=1, column=0, sticky=NSEW)])
+lb_saq= Label (fr8, text='SAQUE', font='Calibri 20', bg='#585E63')
+in_saq= Entry (fr8, font="Arial 16")
+bt_saq=Button (fr8, text='Confirmar', font='Arial 18', bg='#585E63',command= lambda: [saque(),fr8.grid_remove(), fr6.grid(row=1, column=0, sticky=NSEW)])
 
-lb_dep.grid(row=1, column=1, sticky=NSEW)
-in_dep.grid(row=2, column=1, sticky=NSEW)
-bt_dep.grid(row=3, column=1, sticky=NSEW)
+lb_saq.grid(row=1, column=1, sticky=NSEW)
+in_saq.grid(row=2, column=1, sticky=NSEW)
+bt_saq.grid(row=3, column=1, sticky=NSEW)
 
 
 #  Frame Transferência (fr9)
 
 
-lb_dep= Label (fr9, text='TRANSFERÊNCIA', font='Calibri 20', bg='#585E63')
-in_dep= Entry (fr9, font="Arial 16")
-bt_dep=Button (fr9, text='Confirmar', font='Arial 18', bg='#585E63',command= lambda: [fr9.grid_remove(), fr6.grid(row=1, column=0, sticky=NSEW)])
+lb_tr= Label (fr9, text='TRANSFERÊNCIA', font='Calibri 20', bg='#585E63')
+lb1_tr= Label (fr9, text='Valor', font='Calibri 20', bg='#585E63')
+lb2_tr= Label (fr9, text='Conta (Destinatário)', font='Calibri 20', bg='#585E63')
+in_tr= Entry (fr9, font="Arial 16")
+in1_tr= Entry (fr9, font="Arial 16")
+bt_tr=Button (fr9, text='Confirmar', font='Arial 18', bg='#585E63',command= lambda: [transf(),fr9.grid_remove(), fr6.grid(row=1, column=0, sticky=NSEW)])
 
-lb_dep.grid(row=1, column=1, sticky=NSEW)
-in_dep.grid(row=2, column=1, sticky=NSEW)
-bt_dep.grid(row=3, column=1, sticky=NSEW)
+lb_tr.grid(row=0, column=1, sticky=NSEW)
+lb1_tr.grid(row=1, column=1, sticky=NSEW)
+lb2_tr.grid(row=2, column=1, sticky=NSEW)
+
+in_tr.grid(row=1, column=2, sticky=NSEW)
+in1_tr.grid(row=2, column=2, sticky=NSEW)
+bt_tr.grid(row=3, column=1, sticky=NSEW)
 
 
 
 #  Frame Extrato (fr0)
 
 
-lb_dep= Label (fr0, text='EXTRATO', font='Calibri 20', bg='#585E63')
-lb_dep= Label (fr0, text='', font='Calibri 20', bg='#585E63')
-bt_dep=Button (fr0, text='Voltar', font='Arial 18', bg='#585E63',command= lambda: [fr0.grid_remove(), fr6.grid(row=1, column=0, sticky=NSEW)])
+lb_ex= Label (fr0, text='EXTRATO', font='Calibri 20', bg='#585E63')
+lb1_ex= Label (fr0, text='', font='Calibri 20', bg='#585E63')
+bt_ex=Button (fr0, text='Voltar', font='Arial 18', bg='#585E63',command= lambda: [fr0.grid_remove(), fr6.grid(row=1, column=0, sticky=NSEW)])
 
-lb_dep.grid(row=1, column=1, sticky=NSEW)
-in_dep.grid(row=2, column=1, sticky=NSEW)
-bt_dep.grid(row=3, column=1, sticky=NSEW)
+lb_ex.grid(row=1, column=1, sticky=NSEW)
+lb1_ex.grid(row=2, column=1, sticky=NSEW)
+bt_ex.grid(row=3, column=1, sticky=NSEW)
 
 
 

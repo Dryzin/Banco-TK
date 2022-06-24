@@ -2,10 +2,11 @@ from struct import pack
 
 
 class Conta:
-    def __init__(self, CPF: str, numero: str, saldo=0.0):
+    def __init__(self, CPF: str, numero: str, nome: str, saldo=0.0):
         self.CPF = CPF
         self.numero = numero
         self.saldo = saldo
+        self.nome = nome
         self.historico = Historico()
 
 
@@ -25,10 +26,10 @@ class Conta:
         else:
             print("Saldo insuficiente")
 
-    def transfere (self, valor):
+    def transfere (self, valor, destino):
         if valor <= self.saldo:
             self.saldo -= valor
-            #banco2.saldo += valor
+            destino.saldo += valor
             self.historico.transacoes.append(f'Tranferencia de {valor}')
         else:
             print("Saldo insuficiente")
