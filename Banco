@@ -23,6 +23,19 @@ def chama_movi1():
             print(" CPF não encontrado")
 
 
+def depositar():
+    global contas, in2_2, in_4, janela2
+    for i in range(len(contas)):
+        if contas[i].numero == in2_2.get():
+            contas[i].movi1(float(in_4.get()))
+            lb4_if['text'] = contas[i].saldo
+
+        else:
+            print("ERRO")
+            print(contas[i].numero, in2_2.get())
+
+#o Deposito tá funcionando no numero do endereço kk
+
 root = Tk()
 root.configure(bg='#585E63')
 fr1 = Frame(root, bg='#585E63')
@@ -56,8 +69,8 @@ def dep():
     janela2.title("Depósito")
     janela2["bg"] = '#585E63'
     Label(janela2,text='Informe o valor:', font="Calibri 20", bg='#585E63').pack()
-    Entry(janela2).pack()
-    Button(janela2,text='Confirmar',bg='#585E63',command=sair2).pack()
+    ind = (Entry(janela2)).pack()
+    Button(janela2,text='Confirmar',bg='#585E63',command=lambda:[depositar(), sair2()]).pack()
     janela2.geometry("350x100")
     janela2.resizable(width=0, height=0)
     janela2.mainloop()
@@ -307,6 +320,7 @@ bt8 = Button(fr4, text="Acessar", font="Arial 16", image=acessarB, bg='#585E63',
 
 lb1_1= Label (fr5, text='CONTA: ', font="Calibri 16", bg='#585E63')
 in1_1= Entry (fr5, font="Arial 16")
+
 lb2_2= Label (fr5, text='SENHA: ', font="Calibri 16", bg='#585E63')
 
 in2_2= Entry (fr5, font="Arial 16", show='*')

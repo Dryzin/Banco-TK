@@ -16,7 +16,6 @@ class Conta:
         self.saldo+=valor
         self.historico.transacoes.append(f'Deposito de {valor}')
 
-        #self.historico.transacoes.append(f'Deposito de {valor}')
 
     def movi2(self, valor: float):
         if valor <= self.saldo:
