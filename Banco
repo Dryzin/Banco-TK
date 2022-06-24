@@ -36,6 +36,17 @@ def depositar():
 
 #o Deposito tá funcionando no numero do endereço kk
 
+def saque():
+    global contas, in2_2, in_4, janela2
+    for i in range(len(contas)):
+        if contas[i].numero == in2_2.get():
+            contas[i].movi2(float(in_4.get()))
+            lb4_if['text'] = contas[i].saldo
+
+        else:
+            print("ERRO")
+            print(contas[i].numero, in2_2.get())
+
 root = Tk()
 root.configure(bg='#585E63')
 fr1 = Frame(root, bg='#585E63')
@@ -88,7 +99,7 @@ def saq():
     janela3["bg"] = '#585E63'
     Label(janela3,text='Informe o valor:', font="Calibri 20", bg='#585E63').pack()
     Entry(janela3).pack()
-    Button(janela3,text='Confirmar',bg='#585E63',command=sair3).pack()
+    Button(janela3,text='Confirmar',bg='#585E63',command=lambda:[saque(),sair3()]).pack()
     janela3.geometry("350x100")
     janela3.resizable(width=0, height=0)
     janela3.mainloop()
@@ -229,6 +240,40 @@ def capitura(event=None):
     in3.insert(0, y)
 #-------------------------------#
 
+#---Função Tratar CPF Login-----------------------------#
+def capitura1(event=None):    
+    x=in1_1.get().replace('.','').replace('-', '')[:11]
+    y=''
+    if event.keysym.lower() == "backspace": return
+
+    for i in range(len(x)):
+        if x[i] in '0123456789':
+            if i in [2,5]:
+                y+=x[i] + '.'
+            elif i == 8:
+                y+=x[i] + '-'
+            else:
+                y+=x[i]
+    in1_1.delete(0, 'end')
+    in1_1.insert(0, y)
+
+#----Função Tratar Senha -----------------------------#
+def data2(event=None):    
+    x=in2_2.get().replace('/','').replace('/', '')[:8]
+    y=''
+    if event.keysym.lower() == "backspace": return
+
+    for i in range(len(x)):
+        if x[i] in '0123456789':
+            if i in [1,3]:
+                y+=x[i] + '/'
+            else:
+                y+=x[i]
+    in2_2.delete(0, 'end')
+    in2_2.insert(0, y)
+#-------------------------------#
+
+
 var1 = IntVar()
 
 
@@ -320,10 +365,11 @@ bt8 = Button(fr4, text="Acessar", font="Arial 16", image=acessarB, bg='#585E63',
 
 lb1_1= Label (fr5, text='CONTA: ', font="Calibri 16", bg='#585E63')
 in1_1= Entry (fr5, font="Arial 16")
+in1_1.bind("<KeyRelease>", capitura1)
 
 lb2_2= Label (fr5, text='SENHA: ', font="Calibri 16", bg='#585E63')
-
 in2_2= Entry (fr5, font="Arial 16", show='*')
+in2_2.bind("<KeyRelease>", data2)
 
 bt1_1= Button (fr5, text='Entrar',font="Arial 16",image= acessarB, bg='#585E63', command= lambda: [fr3.grid_remove(), fr5.grid_remove(),chama_movi1()])
 bt1_2= Button (fr5, text='Voltar',font="Arial 16",image= voltar, bg='#585E63', command= lambda: [fr1.grid_remove(), fr2.grid_remove(), fr3.grid(row=1, column=1), fr4.grid_remove(), fr5.grid_remove()])
