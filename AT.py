@@ -2,7 +2,7 @@ from struct import pack
 
 
 class Conta:
-    def __init__(self, CPF: str, numero: str, saldo: 0):
+    def __init__(self, CPF: str, numero: str, saldo=0.0):
         self.CPF = CPF
         self.numero = numero
         self.saldo = saldo
@@ -12,27 +12,29 @@ class Conta:
     def inf(self):
         print(f'\nCPF: {self.CPF} \nNumero: {self.numero} \nSaldo: {self.saldo}\n')
 
-    def movi1(self):
-        global janela2, ind, movi1, lb4_if
-        self.saldo += ind
-        lb4_if['text'] = self.saldo
-        #self.historico.transacoes.append(f'Deposito de {valor}')
+    def movi1(self, valor: float):
+        self.saldo+=valor
+        self.historico.transacoes.append(f'Deposito de {valor}')
 
-    def movi2(self):
-        if lb4_if['text'] <= self.saldo:
-            self.saldo-= ind
-            self.historico.transacoes.append(f'Saque de {ind}')
+
+    def movi2(self, valor: float):
+        if valor <= self.saldo:
+            self.saldo-=valor
+            self.historico.transacoes.append(f'Saque de {valor}')
 
         else:
             print("Saldo insuficiente")
 
-    '''def transfere (self, valor):
+    def transfere (self, valor):
         if valor <= self.saldo:
             self.saldo -= valor
-            banco2.saldo += valor
+            #banco2.saldo += valor
             self.historico.transacoes.append(f'Tranferencia de {valor}')
         else:
-            print("Saldo insuficiente")'''
+            print("Saldo insuficiente")
+
+    #contax.transfere(valor, conta)
+    #contas[0].transfere(100, contas[1])
 
 class Historico:
 
