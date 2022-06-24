@@ -47,7 +47,6 @@ def saque():
             print("ERRO")
             print(contas[i].numero, in2_2.get())
 
-
 root = Tk()
 root.configure(bg='#585E63')
 fr1 = Frame(root, bg='#585E63')
