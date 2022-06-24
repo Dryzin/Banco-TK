@@ -31,7 +31,10 @@ class Conta:
             banco2.saldo += valor
             self.historico.transacoes.append(f'Tranferencia de {valor}')
         else:
-            print("Saldo insuficiente")'''
+            print("Saldo insuficiente")
+
+    #contax.transfere(valor, conta)
+    contas[0].transfere(100, contas[1])'''
 
 class Historico:
 
