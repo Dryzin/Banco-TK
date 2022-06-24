@@ -14,7 +14,7 @@ def chama_class_conta():
     print(contas)
 
 def chama_movi1():
-    global contas, in1_1
+    global contas, in1_1, fr6
     for i in range(len(contas)):
         if in1_1.get() == contas[i].CPF and in2_2.get() == contas[i].numero:
             print("foi")
@@ -24,7 +24,7 @@ def chama_movi1():
 
 
 def depositar():
-    global contas, in2_2, in_4, janela2
+    global contas, in2_2, in_4,lb4_if,janela2
     for i in range(len(contas)):
         if contas[i].numero == in2_2.get():
             contas[i].movi1(float(in_4.get()))
@@ -34,10 +34,9 @@ def depositar():
             print("ERRO")
             print(contas[i].numero, in2_2.get())
 
-#o Deposito tá funcionando no numero do endereço kk
 
 def saque():
-    global contas, in2_2, in_4, janela2
+    global contas, in2_2, in_4, lb4_if,janela2
     for i in range(len(contas)):
         if contas[i].numero == in2_2.get():
             contas[i].movi2(float(in_4.get()))
@@ -45,7 +44,20 @@ def saque():
 
         else:
             print("ERRO")
-            print(contas[i].numero, in2_2.get())
+            print(contas[i].saldo)
+
+'''def transf():
+
+    for i in range(len(contas)):
+        if contas[i].numero == "001":
+        origem = contas[i]
+
+    for j in range(len(contas)):
+        if contas[j].numero == "002":
+        destino = contas[j]
+
+origem.transfere(100, destino)
+print(origem.saldo, destino.saldo)'''
 
 root = Tk()
 root.configure(bg='#585E63')
