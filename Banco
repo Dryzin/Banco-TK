@@ -67,6 +67,10 @@ fr3 = Frame(root, bg='#585E63')
 fr4 = Frame(root, bg='#585E63')
 fr5 = Frame(root, bg='#585E63')
 fr6 = LabelFrame(root, width=800, height=1200, bg='#585E63')
+fr7 = Frame(root, bg='#585E63')
+fr8 = Frame(root, bg='#585E63')
+fr9 = Frame(root, bg='#585E63')
+fr0 = Frame(root, bg='#585E63')
 
 acessar= PhotoImage(file="acessar.png")
 acessarB= PhotoImage(file="ACESSAR-b.png")
@@ -81,7 +85,7 @@ logo = PhotoImage(file="LOGO.png")
 
 
 #Depósito
-def sair2():
+'''def sair2():
     global janela2
     janela2.destroy()
 
@@ -96,11 +100,11 @@ def dep():
     Button(janela2,text='Confirmar',bg='#585E63',command=lambda:[depositar(), sair2()]).pack()
     janela2.geometry("350x100")
     janela2.resizable(width=0, height=0)
-    janela2.mainloop()
+    janela2.mainloop()'''
     
 
 #Saque
-def sair3():
+'''def sair3():
     global janela3
     janela3.destroy()
 
@@ -114,12 +118,12 @@ def saq():
     Button(janela3,text='Confirmar',bg='#585E63',command=lambda:[saque(),sair3()]).pack()
     janela3.geometry("350x100")
     janela3.resizable(width=0, height=0)
-    janela3.mainloop()
+    janela3.mainloop()'''
     
 
 #Transferência
  
-def sair4():
+'''def sair4():
     global janela4
     janela4.destroy()
 
@@ -133,7 +137,7 @@ def tran():
     Button(janela4,text='Confirmar',bg='#585E63',command=sair4).pack()
     janela4.geometry("350x100")
     janela4.resizable(width=0, height=0)
-    janela4.mainloop()
+    janela4.mainloop()'''
 
 
 #Extrato
@@ -397,10 +401,13 @@ lb4_if= Label (fr6, text='0.00', font='Calibri 20', bg='#585E63')
 
 bt1_exit= Button (fr6, text='Sair', font='Arial 5',image=sair, bg='#585E63', command= lambda: [fr3.grid(row=1, column=1), fr6.grid_remove(), fr4.grid_remove()])
 
-bt2_deposito=Button (fr6, text='Depósito', font='Arial 18', bg='#585E63', command=dep)
-bt3_saque=Button (fr6, text='Saque', font='Arial 18', bg='#585E63',command=saq)
-bt4_extrato=Button (fr6, text='Extrato', font='Arial 18', bg='#585E63')
-bt5_transferencia=Button (fr6, text='Transferência', font='Arial 14', bg='#585E63',command=tran)
+bt2_deposito=Button (fr6, text='Depósito', font='Arial 18', bg='#585E63', command= lambda: [fr7.grid(row=1, column=1), fr6.grid_remove()])
+bt3_saque=Button (fr6, text='Saque', font='Arial 18', bg='#585E63',command= lambda: [fr8.grid(row=1, column=1), fr6.grid_remove()])
+bt4_extrato=Button (fr6, text='Extrato', font='Arial 18', bg='#585E63',command= lambda: [fr0.grid(row=1, column=1), fr6.grid_remove()])
+bt5_transferencia=Button (fr6, text='Transferência', font='Arial 14', bg='#585E63',command= lambda: [fr9.grid(row=1, column=1), fr6.grid_remove()])
+
+
+
 
 #---Configuração do Frame--------------------------------#
 
@@ -494,6 +501,59 @@ bt3_saque.place(x=0, y=500)
 
 bt4_extrato.place(x=700, y=350)
 bt5_transferencia.place(x=663, y=500)
+
+
+
+#  Frame Deposito (fr7)
+
+
+lb_dep= Label (fr7, text='DEPOSITO', font='Calibri 20', bg='#585E63')
+in_dep= Entry (fr7, font="Arial 16")
+bt_dep=Button (fr7, text='Confirmar', font='Arial 18', bg='#585E63',command= lambda: [fr7.grid_remove(), fr6.grid(row=1, column=0, sticky=NSEW)])
+
+lb_dep.grid(row=1, column=1, sticky=NSEW)
+in_dep.grid(row=2, column=1, sticky=NSEW)
+bt_dep.grid(row=3, column=1, sticky=NSEW)
+
+
+
+#  Frame Saque (fr8)
+
+
+lb_dep= Label (fr8, text='SAQUE', font='Calibri 20', bg='#585E63')
+in_dep= Entry (fr8, font="Arial 16")
+bt_dep=Button (fr8, text='Confirmar', font='Arial 18', bg='#585E63',command= lambda: [fr8.grid_remove(), fr6.grid(row=1, column=0, sticky=NSEW)])
+
+lb_dep.grid(row=1, column=1, sticky=NSEW)
+in_dep.grid(row=2, column=1, sticky=NSEW)
+bt_dep.grid(row=3, column=1, sticky=NSEW)
+
+
+#  Frame Transferência (fr9)
+
+
+lb_dep= Label (fr9, text='TRANSFERÊNCIA', font='Calibri 20', bg='#585E63')
+in_dep= Entry (fr9, font="Arial 16")
+bt_dep=Button (fr9, text='Confirmar', font='Arial 18', bg='#585E63',command= lambda: [fr9.grid_remove(), fr6.grid(row=1, column=0, sticky=NSEW)])
+
+lb_dep.grid(row=1, column=1, sticky=NSEW)
+in_dep.grid(row=2, column=1, sticky=NSEW)
+bt_dep.grid(row=3, column=1, sticky=NSEW)
+
+
+
+#  Frame Extrato (fr0)
+
+
+lb_dep= Label (fr0, text='EXTRATO', font='Calibri 20', bg='#585E63')
+lb_dep= Label (fr0, text='', font='Calibri 20', bg='#585E63')
+bt_dep=Button (fr0, text='Voltar', font='Arial 18', bg='#585E63',command= lambda: [fr0.grid_remove(), fr6.grid(row=1, column=0, sticky=NSEW)])
+
+lb_dep.grid(row=1, column=1, sticky=NSEW)
+in_dep.grid(row=2, column=1, sticky=NSEW)
+bt_dep.grid(row=3, column=1, sticky=NSEW)
+
+
 
 #executar a janela
 root.mainloop()
