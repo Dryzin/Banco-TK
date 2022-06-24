@@ -6,6 +6,59 @@ from AT import *
 
 #---criar janela-----------------------------#
 
+contas = []
+
+def chama_class_conta():
+    global contas, in3, in4
+    contas.append(Conta(in3.get(), in4.get()))
+    print(contas)
+
+def chama_movi1():
+    global contas, in1_1, fr6
+    for i in range(len(contas)):
+        if in1_1.get() == contas[i].CPF and in2_2.get() == contas[i].numero:
+            print("foi")
+            fr6.grid(row=1, column=0, sticky=NSEW)
+        else:
+            print(" CPF não encontrado")
+
+
+def depositar():
+    global contas, in2_2, in_4,lb4_if,janela2
+    for i in range(len(contas)):
+        if contas[i].numero == in2_2.get():
+            contas[i].movi1(float(in_4.get()))
+            lb4_if['text'] = contas[i].saldo
+
+        else:
+            print("ERRO")
+            print(contas[i].numero, in2_2.get())
+
+
+def saque():
+    global contas, in2_2, in_4, lb4_if,janela2
+    for i in range(len(contas)):
+        if contas[i].numero == in2_2.get():
+            contas[i].movi2(float(in_4.get()))
+            lb4_if['text'] = contas[i].saldo
+
+        else:
+            print("ERRO")
+            print(contas[i].saldo)
+
+'''def transf():
+
+    for i in range(len(contas)):
+        if contas[i].numero == "001":
+        origem = contas[i]
+
+    for j in range(len(contas)):
+        if contas[j].numero == "002":
+        destino = contas[j]
+
+origem.transfere(100, destino)
+print(origem.saldo, destino.saldo)'''
+
 root = Tk()
 root.configure(bg='#585E63')
 fr1 = Frame(root, bg='#585E63')
@@ -14,6 +67,10 @@ fr3 = Frame(root, bg='#585E63')
 fr4 = Frame(root, bg='#585E63')
 fr5 = Frame(root, bg='#585E63')
 fr6 = LabelFrame(root, width=800, height=1200, bg='#585E63')
+fr7 = Frame(root, bg='#585E63')
+fr8 = Frame(root, bg='#585E63')
+fr9 = Frame(root, bg='#585E63')
+fr0 = Frame(root, bg='#585E63')
 
 acessar= PhotoImage(file="acessar.png")
 acessarB= PhotoImage(file="ACESSAR-b.png")
@@ -27,43 +84,27 @@ ac= PhotoImage(file="ac.png")
 logo = PhotoImage(file="LOGO.png")
 
 
-contas = []
-def chama_class_conta():
-    global contas
-    contas.append(Conta(in3.get(), in4.get()))
-
-
-def chama_movi1():
-    global ind, contas, in1_1, CPF, movi1, lb4_if
-    for i in range(len(contas)):
-        if contas[i].CPF == in1_1.get():
-            #obj.metodo(argumento)
-            contas[i].movi1(ind.get())
-
-
 #Depósito
-def sair2():
+'''def sair2():
     global janela2
     janela2.destroy()
 
 
 def dep():
     global janela2, ind
-
     janela2 = Tk()
     janela2.title("Depósito")
     janela2["bg"] = '#585E63'
     Label(janela2,text='Informe o valor:', font="Calibri 20", bg='#585E63').pack()
-    ind = Entry(janela2).pack()
-    Button(janela2,text='Confirmar',bg='#585E63',command=lambda:[chama_movi1(), sair2()]).pack()
+    ind = (Entry(janela2)).pack()
+    Button(janela2,text='Confirmar',bg='#585E63',command=lambda:[depositar(), sair2()]).pack()
     janela2.geometry("350x100")
     janela2.resizable(width=0, height=0)
-    janela2.mainloop()
+    janela2.mainloop()'''
     
 
-
 #Saque
-def sair3():
+'''def sair3():
     global janela3
     janela3.destroy()
 
@@ -74,15 +115,15 @@ def saq():
     janela3["bg"] = '#585E63'
     Label(janela3,text='Informe o valor:', font="Calibri 20", bg='#585E63').pack()
     Entry(janela3).pack()
-    Button(janela3,text='Confirmar',bg='#585E63',command=sair3).pack()
+    Button(janela3,text='Confirmar',bg='#585E63',command=lambda:[saque(),sair3()]).pack()
     janela3.geometry("350x100")
     janela3.resizable(width=0, height=0)
-    janela3.mainloop()
+    janela3.mainloop()'''
     
 
 #Transferência
  
-def sair4():
+'''def sair4():
     global janela4
     janela4.destroy()
 
@@ -96,7 +137,7 @@ def tran():
     Button(janela4,text='Confirmar',bg='#585E63',command=sair4).pack()
     janela4.geometry("350x100")
     janela4.resizable(width=0, height=0)
-    janela4.mainloop()
+    janela4.mainloop()'''
 
 
 #Extrato
@@ -215,6 +256,40 @@ def capitura(event=None):
     in3.insert(0, y)
 #-------------------------------#
 
+#---Função Tratar CPF Login-----------------------------#
+def capitura1(event=None):    
+    x=in1_1.get().replace('.','').replace('-', '')[:11]
+    y=''
+    if event.keysym.lower() == "backspace": return
+
+    for i in range(len(x)):
+        if x[i] in '0123456789':
+            if i in [2,5]:
+                y+=x[i] + '.'
+            elif i == 8:
+                y+=x[i] + '-'
+            else:
+                y+=x[i]
+    in1_1.delete(0, 'end')
+    in1_1.insert(0, y)
+
+#----Função Tratar Senha -----------------------------#
+def data2(event=None):    
+    x=in2_2.get().replace('/','').replace('/', '')[:8]
+    y=''
+    if event.keysym.lower() == "backspace": return
+
+    for i in range(len(x)):
+        if x[i] in '0123456789':
+            if i in [1,3]:
+                y+=x[i] + '/'
+            else:
+                y+=x[i]
+    in2_2.delete(0, 'end')
+    in2_2.insert(0, y)
+#-------------------------------#
+
+
 var1 = IntVar()
 
 
@@ -300,17 +375,19 @@ lb_9 = Label(fr3,bg='#585E63',image=acessar)
 
 #--Frame 4-----------------------------#
 bt7 = Button(fr4, text="Voltar ", font="Arial 16",bg='#585E63',image=voltar, command= lambda: [fr1.grid_remove(), fr2.grid_remove(), fr3.grid(row=1, column=1), fr4.grid_remove(), fr5.grid_remove()])
-bt8 = Button(fr4, text="Acessar", font="Arial 16", image=acessarB, bg='#585E63', command= lambda: [fr1.grid_remove(),fr2.grid_remove(), fr5.grid(row=2, column=1), fr4.grid_remove()])
+bt8 = Button(fr4, text="Acessar", font="Arial 16", image=acessarB, bg='#585E63', command= lambda: [fr1.grid_remove(),fr2.grid_remove(), fr5.grid(row=2, column=1), fr4.grid_remove(), chama_class_conta()])
 
 #--Frame 5-----------------------------#
 
 lb1_1= Label (fr5, text='CONTA: ', font="Calibri 16", bg='#585E63')
 in1_1= Entry (fr5, font="Arial 16")
+in1_1.bind("<KeyRelease>", capitura1)
+
 lb2_2= Label (fr5, text='SENHA: ', font="Calibri 16", bg='#585E63')
-
 in2_2= Entry (fr5, font="Arial 16", show='*')
+in2_2.bind("<KeyRelease>", data2)
 
-bt1_1= Button (fr5, text='Entrar',font="Arial 16",image= acessarB, bg='#585E63', command= lambda: [fr3.grid_remove(), fr5.grid_remove(), fr6.grid(row=1, column=0, sticky=NSEW)])
+bt1_1= Button (fr5, text='Entrar',font="Arial 16",image= acessarB, bg='#585E63', command= lambda: [fr3.grid_remove(), fr5.grid_remove(),chama_movi1()])
 bt1_2= Button (fr5, text='Voltar',font="Arial 16",image= voltar, bg='#585E63', command= lambda: [fr1.grid_remove(), fr2.grid_remove(), fr3.grid(row=1, column=1), fr4.grid_remove(), fr5.grid_remove()])
 
 #--Frame 6-----------------------------#
@@ -324,10 +401,13 @@ lb4_if= Label (fr6, text='0.00', font='Calibri 20', bg='#585E63')
 
 bt1_exit= Button (fr6, text='Sair', font='Arial 5',image=sair, bg='#585E63', command= lambda: [fr3.grid(row=1, column=1), fr6.grid_remove(), fr4.grid_remove()])
 
-bt2_deposito=Button (fr6, text='Depósito', font='Arial 18', bg='#585E63', command=dep)
-bt3_saque=Button (fr6, text='Saque', font='Arial 18', bg='#585E63',command=saq)
-bt4_extrato=Button (fr6, text='Extrato', font='Arial 18', bg='#585E63')
-bt5_transferencia=Button (fr6, text='Transferência', font='Arial 14', bg='#585E63',command=tran)
+bt2_deposito=Button (fr6, text='Depósito', font='Arial 18', bg='#585E63', command= lambda: [fr7.grid(row=1, column=1), fr6.grid_remove()])
+bt3_saque=Button (fr6, text='Saque', font='Arial 18', bg='#585E63',command= lambda: [fr8.grid(row=1, column=1), fr6.grid_remove()])
+bt4_extrato=Button (fr6, text='Extrato', font='Arial 18', bg='#585E63',command= lambda: [fr0.grid(row=1, column=1), fr6.grid_remove()])
+bt5_transferencia=Button (fr6, text='Transferência', font='Arial 14', bg='#585E63',command= lambda: [fr9.grid(row=1, column=1), fr6.grid_remove()])
+
+
+
 
 #---Configuração do Frame--------------------------------#
 
@@ -421,6 +501,59 @@ bt3_saque.place(x=0, y=500)
 
 bt4_extrato.place(x=700, y=350)
 bt5_transferencia.place(x=663, y=500)
+
+
+
+#  Frame Deposito (fr7)
+
+
+lb_dep= Label (fr7, text='DEPOSITO', font='Calibri 20', bg='#585E63')
+in_dep= Entry (fr7, font="Arial 16")
+bt_dep=Button (fr7, text='Confirmar', font='Arial 18', bg='#585E63',command= lambda: [fr7.grid_remove(), fr6.grid(row=1, column=0, sticky=NSEW)])
+
+lb_dep.grid(row=1, column=1, sticky=NSEW)
+in_dep.grid(row=2, column=1, sticky=NSEW)
+bt_dep.grid(row=3, column=1, sticky=NSEW)
+
+
+
+#  Frame Saque (fr8)
+
+
+lb_dep= Label (fr8, text='SAQUE', font='Calibri 20', bg='#585E63')
+in_dep= Entry (fr8, font="Arial 16")
+bt_dep=Button (fr8, text='Confirmar', font='Arial 18', bg='#585E63',command= lambda: [fr8.grid_remove(), fr6.grid(row=1, column=0, sticky=NSEW)])
+
+lb_dep.grid(row=1, column=1, sticky=NSEW)
+in_dep.grid(row=2, column=1, sticky=NSEW)
+bt_dep.grid(row=3, column=1, sticky=NSEW)
+
+
+#  Frame Transferência (fr9)
+
+
+lb_dep= Label (fr9, text='TRANSFERÊNCIA', font='Calibri 20', bg='#585E63')
+in_dep= Entry (fr9, font="Arial 16")
+bt_dep=Button (fr9, text='Confirmar', font='Arial 18', bg='#585E63',command= lambda: [fr9.grid_remove(), fr6.grid(row=1, column=0, sticky=NSEW)])
+
+lb_dep.grid(row=1, column=1, sticky=NSEW)
+in_dep.grid(row=2, column=1, sticky=NSEW)
+bt_dep.grid(row=3, column=1, sticky=NSEW)
+
+
+
+#  Frame Extrato (fr0)
+
+
+lb_dep= Label (fr0, text='EXTRATO', font='Calibri 20', bg='#585E63')
+lb_dep= Label (fr0, text='', font='Calibri 20', bg='#585E63')
+bt_dep=Button (fr0, text='Voltar', font='Arial 18', bg='#585E63',command= lambda: [fr0.grid_remove(), fr6.grid(row=1, column=0, sticky=NSEW)])
+
+lb_dep.grid(row=1, column=1, sticky=NSEW)
+in_dep.grid(row=2, column=1, sticky=NSEW)
+bt_dep.grid(row=3, column=1, sticky=NSEW)
+
+
 
 #executar a janela
 root.mainloop()
